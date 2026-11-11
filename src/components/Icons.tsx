@@ -9,6 +9,7 @@ export const DojoIcon = (p: P) => (<svg {...base} {...p}><rect x="4.5" y="4.5" w
 export const FocusIcon = (p: P) => (<svg {...base} {...p}><path d="M3.5 12h2.5l2-4.5 3 9 2.5-6 1.5 3h5.5" /></svg>);
 export const ProfileIcon = (p: P) => (<svg {...base} {...p}><circle cx="12" cy="8.5" r="3.5" /><path d="M5 19.5c1.2-3.3 3.8-5 7-5s5.8 1.7 7 5" /></svg>);
 export const ArrowUpRight = (p: P) => (<svg {...base} width={16} height={16} {...p}><path d="M7 17 17 7M9 7h8v8" /></svg>);
+export const ArrowRight = (p: P) => (<svg {...base} width={18} height={18} {...p}><path d="M5 12h14M13 6l6 6-6 6" /></svg>);
 export const ArrowLeft = (p: P) => (<svg {...base} width={20} height={20} {...p}><path d="M15 6l-6 6 6 6" /></svg>);
 export const PlayIcon = (p: P) => (<svg viewBox="0 0 24 24" width={28} height={28} fill="currentColor" {...p}><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" /></svg>);
 export const PauseIcon = (p: P) => (<svg viewBox="0 0 24 24" width={28} height={28} fill="currentColor" {...p}><rect x="6.5" y="5" width="4" height="14" rx="1.2" /><rect x="13.5" y="5" width="4" height="14" rx="1.2" /></svg>);

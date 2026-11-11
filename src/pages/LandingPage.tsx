@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from '../components/Icons';
+import { ArrowRight, ArrowUpRight } from '../components/Icons';
 import { Disclaimer, Wordmark } from '../components/ui';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -26,25 +26,25 @@ export default function LandingPage() {
         </Link>
       </header>
 
-      <section className="relative">
-        <span className="pointer-events-none absolute -right-16 top-6 h-40 w-40 rounded-full bg-sable" aria-hidden />
-        <span className="pointer-events-none absolute right-16 top-0 h-12 w-12 rounded-full bg-lilas" aria-hidden />
-        <p className="surtitre relative">Entraînement quotidien</p>
-        <h1 className="relative mt-3 text-[40px] leading-[1.05] sm:text-hero">
-          Cette conversation que vous redoutez ? <span className="text-vert">Préparez-vous à l’avoir.</span>
+      <section>
+        {/* Ronds décoratifs dans leur propre zone, au-dessus du texte : ils ne touchent jamais un mot. */}
+        <div className="relative mb-2 h-20" aria-hidden>
+          <span className="pointer-events-none absolute right-0 top-0 h-20 w-20 rounded-full bg-sable" />
+          <span className="pointer-events-none absolute right-16 top-1 h-10 w-10 rounded-full bg-lilas" />
+        </div>
+        <p className="surtitre">Pour managers et leaders</p>
+        <h1 className="mt-3 text-[40px] leading-[1.05] sm:text-hero">
+          Cette conversation que vous redoutez ? <span className="text-vert">Préparez-vous à l’avoir.</span>
         </h1>
-        <p className="relative mt-5 text-corps text-encre/80">
-          Présence vous aide à ancrer, jour après jour, ce que vous travaillez en formation, en coaching ou en thérapie. Des séances courtes, personnalisées, pensées pour la vraie vie.
+        <p className="mt-5 text-corps text-encre/80">
+          5 minutes d’entraînement par jour pour rester calme dans les échanges tendus et poser vos limites sans culpabiliser, jusqu’à en faire un réflexe. Commencez par découvrir votre profil.
         </p>
-        <div className="relative mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-8 flex flex-col sm:flex-row">
           <Link to="/diagnostic" className="btn-vert">
-            Faire mon diagnostic <ArrowUpRight />
-          </Link>
-          <Link to={user ? '/app' : '/connexion'} className="btn-ligne">
-            {user ? 'Accéder à mon espace' : 'Se connecter'}
+            Découvrir mon profil <ArrowRight />
           </Link>
         </div>
-        <p className="relative mt-3 text-mini text-encre/60">Gratuit, 2 minutes, sans création de compte.</p>
+        <p className="mt-3 text-mini text-encre/60">Gratuit, 2 minutes, sans création de compte.</p>
       </section>
 
       <section className="relative overflow-hidden rounded-carte bg-vert p-6 text-white">
