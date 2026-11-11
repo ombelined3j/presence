@@ -8,7 +8,7 @@ import { DOJO_SEED } from '../src/data/dojo.ts';
 const q = (s) => `'${String(s).replace(/'/g, "''")}'`;
 const lines = [
   '-- Fichier généré par scripts/generate-seed.mjs. Ne pas modifier à la main.',
-  '-- Contenu initial : 5 audios de centrage, diagnostic, scénarios du Dojo.',
+  '-- Contenu initial : 5 audios d’ancrage, diagnostic, scénarios du Dojo.',
   '',
   'insert into public.audio_exercises (title, description, audio_url, category, duration_seconds, is_active, position) values',
   AUDIO_SEED.map((a) => `  (${q(a.title)}, ${q(a.description)}, ${q(a.audio_url)}, 'centering', ${a.duration_seconds}, true, ${a.position})`).join(',\n') + ';',

@@ -7,7 +7,7 @@ export const COMPLETION_RATIO = 0.9; // identique au contrôle côté base (vali
 
 type Phase = 'loading' | 'ready' | 'completed' | 'stopped';
 
-// Suivi d'une écoute de centrage dans daily_sessions :
+// Suivi d'une écoute d’ancrage dans daily_sessions :
 // - la ligne est créée au premier appui sur lecture (pas à l'ouverture de la page) ;
 // - la durée réellement écoutée est sauvegardée régulièrement ;
 // - quitter la page marque la séance "interrupted" ; elle pourra être reprise le jour même ;

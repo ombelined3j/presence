@@ -24,7 +24,7 @@ export default function DailySessionCard({ mode, onModeChange, audio, doneToday 
           onClick={() => onModeChange('centering')}
           className={`rounded-full px-4 py-2 transition ${centering ? 'bg-white text-encre' : 'text-white/85'}`}
         >
-          Centrage
+          Ancrage
         </button>
         <button
           role="tab"
@@ -40,7 +40,7 @@ export default function DailySessionCard({ mode, onModeChange, audio, doneToday 
         Séance du jour · {centering ? (audio ? formatMinutes(audio.duration_seconds) : 'environ 5 min') : 'environ 5 min'}
       </p>
       <h2 className="relative mt-1 font-titre text-carte">
-        {centering ? (audio ? audio.title : 'Votre centrage du matin') : 'Préparer une conversation qui vous préoccupe'}
+        {centering ? (audio ? audio.title : 'Votre ancrage du matin') : 'Préparer une conversation qui vous préoccupe'}
       </h2>
       <p className="relative mt-2 text-mini text-white/80">
         {centering

@@ -154,7 +154,7 @@ create table public.daily_sessions (
 );
 create index daily_sessions_user_date_idx on public.daily_sessions (user_id, session_date desc);
 
--- Une séance de centrage n'est "terminée" que si l'écoute réelle couvre
+-- Une séance d’ancrage n'est "terminée" que si l'écoute réelle couvre
 -- au moins 90 % de la durée prévue. Vérifié côté base, pas seulement dans l'interface.
 create or replace function public.validate_daily_session()
 returns trigger
@@ -176,7 +176,7 @@ begin
     if new.mode = 'centering' then
       select duration_seconds into expected from public.audio_exercises where id = new.exercise_id;
       if expected is null then
-        raise exception 'Séance de centrage sans audio associé';
+        raise exception 'Séance sans audio associé';
       end if;
       -- Double vérification : durée d'écoute déclarée ET temps réellement écoulé.
       if new.duration_seconds < floor(expected * 0.9)

@@ -37,7 +37,7 @@ export default function DiagnosticResultPage() {
         <p className="mt-2 text-corps">{profile.firstExercise.text}</p>
         {audio && (
           <p className="mt-3 text-mini text-encre/75">
-            Et pour votre première séance de centrage : « {audio.title} ».
+            Et pour votre première séance d’ancrage : « {audio.title} ».
           </p>
         )}
       </section>

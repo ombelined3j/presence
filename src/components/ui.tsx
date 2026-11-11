@@ -63,14 +63,6 @@ export function PageHeader({ kicker, title, highlight, back, children }: { kicke
   );
 }
 
-export function Disclaimer({ className = '' }: { className?: string }) {
-  return (
-    <p className={`text-mini text-encre/55 ${className}`}>
-      Présence est un outil d’entraînement. Il ne remplace ni une thérapie, ni un accompagnement professionnel.
-    </p>
-  );
-}
-
 export function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: ReactNode }) {
   return (
     <button

@@ -5,7 +5,7 @@ import ProfileSettings from '../components/ProfileSettings';
 import ProgressTracker from '../components/ProgressTracker';
 import SessionHistory from '../components/SessionHistory';
 import { ArrowUpRight } from '../components/Icons';
-import { Disclaimer, EmptyState, ErrorBox, Loader, PageHeader } from '../components/ui';
+import { EmptyState, ErrorBox, Loader, PageHeader } from '../components/ui';
 import { useAuth } from '../contexts/AuthContext';
 import { REFLEX_PROFILES } from '../data/reflexes';
 import { useAsync } from '../hooks/useAsync';
@@ -155,7 +155,6 @@ export default function ProfilePage() {
         <Link to="/admin" className="btn-ligne">Gérer la bibliothèque audio <ArrowUpRight /></Link>
       )}
       <button className="btn-encre" onClick={logout}>Se déconnecter</button>
-      <Disclaimer />
     </div>
   );
 }

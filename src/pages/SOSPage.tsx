@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BreathingGuide from '../components/BreathingGuide';
 import { ArrowUpRight, CheckIcon } from '../components/Icons';
-import { Chip, Disclaimer, ErrorBox, PageHeader } from '../components/ui';
+import { Chip, ErrorBox, PageHeader } from '../components/ui';
 import { useAuth } from '../contexts/AuthContext';
 import { toMessage } from '../services/errors';
 import { saveSituation } from '../services/situations';
@@ -157,7 +157,6 @@ export default function SOSPage() {
 
       <section className="rounded-2xl bg-surface p-4 text-mini text-encre/70">
         <p>En cas de danger ou de détresse intense, contactez le 112 (urgences) ou le 3114 (prévention du suicide, 24 h/24, gratuit).</p>
-        <Disclaimer className="mt-2" />
       </section>
     </div>
   );

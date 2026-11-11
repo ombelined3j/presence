@@ -157,7 +157,7 @@ export default function AudioPlayer({
   return (
     <div className={`rounded-carte p-5 ${dark ? 'bg-vert text-white' : 'bg-surface text-encre'}`}>
       <audio ref={audioRef} src={src} preload="metadata" playsInline />
-      <p className={`text-mini ${dark ? 'text-white/75' : 'text-encre/60'}`}>Centrage · {formatClock(duration)}</p>
+      <p className={`text-mini ${dark ? 'text-white/75' : 'text-encre/60'}`}>Ancrage · {formatClock(duration)}</p>
       <h2 className="mt-1 font-titre text-carte">{title}</h2>
       {description && <p className={`mt-2 text-mini ${dark ? 'text-white/80' : 'text-encre/70'}`}>{description}</p>}
 

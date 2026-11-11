@@ -11,7 +11,7 @@ import { formatClock } from '../utils/dates';
 import AudioPlayer from './AudioPlayer';
 import DiagnosticProgress from './DiagnosticProgress';
 import { ArrowLeft, ArrowUpRight, CheckIcon } from './Icons';
-import { Chip, Disclaimer, ErrorBox } from './ui';
+import { Chip, ErrorBox } from './ui';
 
 type Stage = 'describe' | 'plan' | 'steps' | 'summary' | 'done';
 
@@ -131,7 +131,6 @@ export default function PreparationFlow({ source, backTo }: { source: SessionSou
         </div>
         {error && <ErrorBox message={error} />}
         <button className="btn-vert" onClick={() => void toPlan()}>Continuer <ArrowUpRight /></button>
-        <Disclaimer />
       </div>
     );
   }

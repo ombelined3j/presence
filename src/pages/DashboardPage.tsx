@@ -51,7 +51,7 @@ export default function DashboardPage() {
         <DailySessionCard mode={mode} onModeChange={setMode} audio={data?.audio ?? null} doneToday={doneToday} />
       )}
       {!loading && !error && !data?.audio && mode === 'centering' && (
-        <ErrorBox message="Aucun audio de centrage n’est disponible pour le moment. La bibliothèque est peut-être vide." />
+        <ErrorBox message="Aucun audio d’ancrage n’est disponible pour le moment. La bibliothèque est peut-être vide." />
       )}
 
       <div className="grid grid-cols-2 gap-3">
@@ -61,7 +61,7 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-2 gap-3">
         <FocusCard to="/app/dojo" kicker="À la séance" title="Dojo" text="S’entraîner sur des mises en situation." color="lilas" />
-        <FocusCard to="/app/focus" kicker="À la demande" title="Focus" text="Réécouter un centrage." color="surface" />
+        <FocusCard to="/app/focus" kicker="À la demande" title="Focus" text="Réécouter un audio." color="surface" />
       </div>
 
       {data && (

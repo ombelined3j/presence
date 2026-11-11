@@ -9,7 +9,7 @@ import { fetchActiveAudios, fetchTodayAudio } from '../services/sessions';
 import type { SessionSource } from '../types';
 import { formatClock } from '../utils/dates';
 
-// Séance quotidienne, mode Centrage (source "daily"),
+// Séance quotidienne, mode Ancrage (source "daily"),
 // ou réécoute libre d'un audio depuis Focus (source "focus", /app/focus/audio/:id).
 export default function CenteringSessionPage({ source = 'daily' }: { source?: SessionSource }) {
   const { user } = useAuth();
@@ -31,7 +31,7 @@ export default function CenteringSessionPage({ source = 'daily' }: { source?: Se
     return (
       <>
         <PageHeader kicker="Séance du jour" title="Aucun audio disponible" back={back} />
-        <EmptyState title="La bibliothèque est vide">Aucun audio de centrage actif n’a été trouvé.</EmptyState>
+        <EmptyState title="La bibliothèque est vide">Aucun audio d’ancrage actif n’a été trouvé.</EmptyState>
       </>
     );
   }
@@ -70,7 +70,7 @@ export default function CenteringSessionPage({ source = 'daily' }: { source?: Se
 
   return (
     <div className="flex flex-col gap-6">
-      <PageHeader kicker={source === 'focus' ? 'Focus · centrage' : 'Séance du jour · centrage'} title="Prenez un moment" highlight="pour vous." back={back}>
+      <PageHeader kicker={source === 'focus' ? 'Focus · ancrage' : 'Séance du jour · ancrage'} title="Prenez un moment" highlight="pour vous." back={back}>
         Installez-vous confortablement, dans un endroit calme si possible. Le casque ou les écouteurs aident.
       </PageHeader>
 

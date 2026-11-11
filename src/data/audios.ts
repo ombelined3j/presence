@@ -1,5 +1,5 @@
 // Durées mesurées sur les fichiers réels (ffprobe), arrondies.
-// Source unique des cinq audios de centrage fournis. Sert de seed pour audio_exercises.
+// Source unique des cinq audios d’ancrage fournis. Sert de seed pour audio_exercises.
 // En production, la bibliothèque se gère depuis la base (page /admin), pas depuis ce fichier.
 
 export interface AudioSeed {

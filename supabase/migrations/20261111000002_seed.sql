@@ -1,5 +1,5 @@
 -- Fichier généré par scripts/generate-seed.mjs. Ne pas modifier à la main.
--- Contenu initial : 5 audios de centrage, diagnostic, scénarios du Dojo.
+-- Contenu initial : 5 audios d’ancrage, diagnostic, scénarios du Dojo.
 
 insert into public.audio_exercises (title, description, audio_url, category, duration_seconds, is_active, position) values
   ('Scan corporel', 'Parcourir le corps, de la tête aux pieds, pour revenir dans l’instant avant la journée.', 'https://res.cloudinary.com/ncu7idmv/video/upload/v1794424390/PQ_scan_corporel_6min30.m4a', 'centering', 391, true, 1),

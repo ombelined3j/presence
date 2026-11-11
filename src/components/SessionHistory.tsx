@@ -15,7 +15,7 @@ export default function SessionHistory({ sessions, limit }: { sessions: DailySes
         <li key={s.id} className="flex items-center justify-between gap-3 py-3.5">
           <div className="min-w-0">
             <p className="truncate text-corps">
-              {s.mode === 'centering' ? s.audio_exercises?.title ?? 'Centrage' : 'Préparation d’une situation'}
+              {s.mode === 'centering' ? s.audio_exercises?.title ?? 'Ancrage' : 'Préparation d’une situation'}
             </p>
             <p className="text-mini text-encre/55">
               {formatShortDate(s.session_date)} · {s.source === 'focus' ? 'Focus' : 'Séance du jour'} · {formatClock(s.duration_seconds)}

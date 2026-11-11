@@ -9,12 +9,12 @@ import { fetchActiveAudios, fetchSessions } from '../services/sessions';
 import { fetchSituations } from '../services/situations';
 import { formatClock, formatShortDate } from '../utils/dates';
 
-type Tab = 'centrage' | 'situation';
+type Tab = 'ancrage' | 'situation';
 const COLORS = ['bg-vert text-white', 'bg-sable', 'bg-lilas', 'bg-surface', 'bg-sable'];
 
 export default function FocusPage() {
   const { user } = useAuth();
-  const [tab, setTab] = useState<Tab>('centrage');
+  const [tab, setTab] = useState<Tab>('ancrage');
   const { data, loading, error, reload } = useAsync(async () => {
     const [audios, sessions, situations] = await Promise.all([fetchActiveAudios(), fetchSessions(user!.id, 100), fetchSituations(user!.id)]);
     return { audios, sessions, situations };
@@ -28,9 +28,9 @@ export default function FocusPage() {
       <PageHeader kicker="Focus" title="Choisissez votre" highlight="exercice." />
 
       <div className="inline-flex self-start rounded-full bg-surface p-1 text-mini" role="tablist">
-        {(['centrage', 'situation'] as Tab[]).map((t) => (
+        {(['ancrage', 'situation'] as Tab[]).map((t) => (
           <button key={t} role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`rounded-full px-4 py-2.5 transition ${tab === t ? 'bg-vert text-white' : 'text-encre/75'}`}>
-            {t === 'centrage' ? 'Centrage' : 'Situation difficile'}
+            {t === 'ancrage' ? 'Ancrage' : 'Situation difficile'}
           </button>
         ))}
       </div>
@@ -39,7 +39,7 @@ export default function FocusPage() {
         <Loader />
       ) : error ? (
         <ErrorBox message={error} onRetry={reload} />
-      ) : tab === 'centrage' ? (
+      ) : tab === 'ancrage' ? (
         <>
           {data!.audios.length === 0 ? (
             <EmptyState title="Aucun audio disponible" />
