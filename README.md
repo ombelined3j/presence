@@ -21,8 +21,9 @@ Appliquer dans l'ordre, sur le projet Supabase (SQL editor ou `supabase db push`
 1. `supabase/migrations/20261111000001_schema.sql` : tables, relations, déclencheurs, RLS.
 2. `supabase/migrations/20261111000002_seed.sql` : 5 audios, diagnostic, 6 scénarios Dojo.
 3. `supabase/migrations/20261111000003_harden_functions.sql` : droits sur les fonctions (linter Supabase).
+4. `supabase/migrations/20261111000004_wording.sql` : libellés des messages d'erreur du trigger `validate_daily_session` (plus de mot « centrage »).
 
-Ces trois migrations sont déjà appliquées sur le projet `sfsuidbbitepqsxygogx`.
+Ces quatre migrations sont déjà appliquées sur le projet `sfsuidbbitepqsxygogx`.
 
 Le seed est généré depuis `src/data/*.ts` : `node --experimental-strip-types scripts/generate-seed.mjs`.
 
