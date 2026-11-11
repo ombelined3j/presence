@@ -41,7 +41,14 @@ const SITUATIONS = [
 const BENEFITS = [
   { title: 'Rester stable', text: 'Garder votre calme quand une conversation se tend.', color: 'bg-sable' },
   { title: 'Oser dire', text: 'Poser vos limites et exprimer vos besoins sans culpabiliser.', color: 'bg-lilas' },
-  { title: 'Moins ressasser', text: 'Moins rejouer la scène après coup, et moins vous critiquer.', color: 'bg-surface' },
+  { title: 'Moins ressasser', text: 'Moins rejouer la scène après coup, et moins vous critiquer.', color: 'bg-vert text-white' },
+];
+
+// Couleurs de la charte pour les séries de 3 cartes (l'orange reste réservé au SOS).
+const TRIO = [
+  { bg: 'bg-sable', title: 'text-encre', text: 'text-encre/80', dot: 'bg-vert' },
+  { bg: 'bg-lilas', title: 'text-encre', text: 'text-encre/80', dot: 'bg-vert' },
+  { bg: 'bg-vert', title: 'text-white', text: 'text-white/90', dot: 'bg-white' },
 ];
 
 const OFFRE = ['Diagnostic gratuit', '1 semaine de pratique offerte', 'Sans engagement'];
@@ -92,10 +99,10 @@ export default function LandingPage() {
           Vous avez déjà beaucoup appris. Le plus dur, c’est le moment venu.
         </h2>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          {CONSTAT.map((c) => (
-            <div key={c.title} className="rounded-carte bg-surface p-5">
-              <h3 className="font-titre text-carte text-vert">{c.title}</h3>
-              <p className="mt-2 text-mini text-encre/80">{c.text}</p>
+          {CONSTAT.map((c, i) => (
+            <div key={c.title} className={`rounded-carte p-5 ${TRIO[i].bg}`}>
+              <h3 className={`font-titre text-carte ${TRIO[i].title}`}>{c.title}</h3>
+              <p className={`mt-2 text-mini ${TRIO[i].text}`}>{c.text}</p>
             </div>
           ))}
         </div>
@@ -162,7 +169,7 @@ export default function LandingPage() {
           {BENEFITS.map((b) => (
             <div key={b.title} className={`rounded-carte p-5 ${b.color}`}>
               <h3 className="font-titre text-carte">{b.title}</h3>
-              <p className="mt-1 text-mini text-encre/80">{b.text}</p>
+              <p className={`mt-1 text-mini ${b.color.includes('bg-vert') ? 'text-white/90' : 'text-encre/80'}`}>{b.text}</p>
             </div>
           ))}
         </div>
@@ -172,9 +179,9 @@ export default function LandingPage() {
       <section aria-labelledby="offre" className="rounded-carte bg-surface p-6">
         <h2 id="offre" className="font-titre text-[26px] leading-tight">Une offre simple, pour commencer en douceur.</h2>
         <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-          {OFFRE.map((o) => (
-            <li key={o} className="flex items-center gap-3 rounded-2xl bg-fond px-4 py-3.5 text-corps">
-              <span className="h-2 w-2 shrink-0 rounded-full bg-vert" aria-hidden />
+          {OFFRE.map((o, i) => (
+            <li key={o} className={`flex items-center gap-3 rounded-2xl px-4 py-3.5 text-corps ${TRIO[i].bg} ${TRIO[i].title}`}>
+              <span className={`h-2 w-2 shrink-0 rounded-full ${TRIO[i].dot}`} aria-hidden />
               {o}
             </li>
           ))}
@@ -188,7 +195,7 @@ export default function LandingPage() {
         <p className="mt-2 text-corps text-encre/80">
           {nb('Vous retirer, endurer, vous suradapter, vous imposer ou faire comme il faut : découvrez le réflexe qui prend le dessus quand un échange se tend.')}
         </p>
-        <CtaButton className="btn-vert mt-5" />
+        <CtaButton className="btn-encre mt-5" />
         <p className="mt-3 text-mini text-encre/65">Gratuit, 2 minutes, sans création de compte.</p>
       </section>
 
