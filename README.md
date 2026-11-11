@@ -7,11 +7,12 @@ React + TypeScript + Tailwind CSS + Supabase (Vite).
 
 ```bash
 npm install
-cp .env.example .env.local   # renseigner VITE_SUPABASE_URL et VITE_SUPABASE_ANON_KEY (clé publique uniquement)
 npm run dev
 ```
 
-Sans `.env.local`, la landing page et le diagnostic fonctionnent (questions de secours locales) ; la connexion et les données non.
+La configuration Supabase publique est dans `.env` (versionné). Un `.env.local` peut la surcharger.
+
+Sans configuration, la landing page et le diagnostic fonctionnent (questions de secours locales) ; la connexion et les données non.
 
 ## Base de données
 
