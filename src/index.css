@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-fond text-encre font-texte text-corps antialiased;
+    font-weight: 400;
+  }
+  h1, h2, h3 { @apply font-titre; font-weight: 400; letter-spacing: -0.01em; }
+  strong, b { font-weight: 500; }
+  :focus-visible { outline: 2px solid #506662; outline-offset: 3px; border-radius: 12px; }
+}
+
+@layer components {
+  .surtitre { @apply text-mini uppercase tracking-[0.14em] text-vert; }
+  .btn-blanc { @apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-corps text-encre transition active:scale-[0.98] disabled:opacity-50; }
+  .btn-vert { @apply inline-flex items-center justify-center gap-2 rounded-full bg-vert px-6 py-3.5 text-corps text-white transition active:scale-[0.98] disabled:opacity-50; }
+  .btn-encre { @apply inline-flex items-center justify-center gap-2 rounded-full bg-encre px-6 py-3.5 text-corps text-fond transition active:scale-[0.98] disabled:opacity-50; }
+  .btn-ligne { @apply inline-flex items-center justify-center gap-2 rounded-full border border-encre/20 px-6 py-3.5 text-corps text-encre transition active:scale-[0.98] disabled:opacity-50; }
+  .champ { @apply w-full rounded-2xl border border-encre/15 bg-white px-4 py-3.5 text-corps text-encre placeholder:text-encre/40 focus:border-vert focus:outline-none; }
+  .carte { @apply rounded-carte p-5; }
+}
+
+@keyframes respire {
+  0%, 100% { transform: scale(0.72); }
+  40%, 55% { transform: scale(1); }
+}
+
+input[type='range'] { -webkit-appearance: none; appearance: none; }
+input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 999px; background: #FFFFFF; border: 2px solid #506662; box-shadow: 0 1px 4px rgba(47,51,36,.2); }
+input[type='range']::-moz-range-thumb { width: 20px; height: 20px; border-radius: 999px; background: #FFFFFF; border: 2px solid #506662; }
