@@ -20,12 +20,12 @@ const STEPS = [
   {
     n: '2',
     title: 'Entraînez-vous 5 minutes chaque matin',
-    text: 'Un rappel le matin, puis un audio et un micro-exercice adaptés à votre profil, pour rester calme et stable quand une conversation se tend.',
+    text: 'Un rappel le matin, puis une séance guidée et un micro-exercice adaptés à votre profil, pour rester calme et stable quand une conversation se tend.',
   },
   {
     n: '3',
     title: 'Préparez les conversations qui comptent',
-    text: 'Une conversation approche ? Choisissez la situation et recevez un audio pour clarifier ce que vous voulez, trouver votre première phrase et rester stable au moment de parler.',
+    text: 'Une conversation approche ? Choisissez la situation et recevez une séance pour clarifier ce que vous voulez, trouver votre première phrase et rester stable au moment de parler.',
   },
 ];
 
@@ -100,7 +100,7 @@ export default function LandingPage() {
           ))}
         </div>
         <p className="mt-6 text-corps text-encre/80">
-          {nb('Ce qui manque, ce n’est pas la théorie. C’est la pratique : un entraînement régulier, quand vous voulez, où vous voulez. En français.')}
+          {nb('Ce qui manque, ce n’est pas la théorie. C’est la pratique : un entraînement régulier, quand vous voulez, où vous voulez.')}
         </p>
       </section>
 
@@ -122,11 +122,11 @@ export default function LandingPage() {
 
       {/* 4. Aperçu de l'écran « Séance du jour » */}
       <section className="relative overflow-hidden rounded-carte bg-vert p-6 text-white" aria-label="Aperçu de la séance du jour">
-        <img src={bulleViolette} alt="" aria-hidden className="pointer-events-none absolute -right-2 -top-2 w-14" />
+        <img src={bulleViolette} alt="" aria-hidden className="pointer-events-none absolute right-5 top-5 w-11" />
         <p className="text-mini text-white/75">Séance du jour · 5 min</p>
-        <h2 className="mt-1 pr-12 font-titre text-[26px] leading-tight">Chaque matin, une séance pensée pour vous.</h2>
+        <h2 className="mt-1 pr-14 font-titre text-[26px] leading-tight">Chaque matin, une séance pensée pour vous.</h2>
         <p className="mt-3 text-corps text-white/85">
-          Un audio guidé, puis un micro-exercice lié à votre profil. À force de pratique, rester calme et dire ce qui compte devient naturel.
+          Une séance guidée, puis un micro-exercice lié à votre profil. À force de pratique, rester calme et dire ce qui compte devient naturel.
         </p>
         {/* Éléments factices : ils imitent l'app, ils ne sont pas cliquables. */}
         <div className="mt-6 grid select-none gap-3 sm:grid-cols-2" aria-hidden>
@@ -134,7 +134,7 @@ export default function LandingPage() {
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-vert text-white">
               <PlayIcon width={18} height={18} className="ml-0.5" />
             </span>
-            <span className="whitespace-nowrap text-corps">Audio du jour · 5 min</span>
+            <span className="text-corps">Ma séance du jour <span className="whitespace-nowrap">· 5 min</span></span>
           </div>
           <div className="flex cursor-default items-center justify-between gap-3 rounded-2xl bg-sable px-4 py-3.5 text-encre">
             <span className="text-corps">Préparer une situation difficile</span>
@@ -179,25 +179,19 @@ export default function LandingPage() {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-mini text-encre/65">Web app, rien à télécharger. En français.</p>
+        <p className="mt-4 text-mini text-encre/65">Web app, rien à télécharger.</p>
       </section>
 
       {/* 8. Appel final */}
       <section className="rounded-carte bg-sable p-6">
         <h2 className="font-titre text-[26px] leading-tight">Commencez par découvrir votre profil.</h2>
         <p className="mt-2 text-corps text-encre/80">
-          {nb('Vous retirer, endurer, vous suradapter, vous imposer ou faire comme il faut : découvrez le réflexe qui prend le dessus quand un échange se tend, et votre point de départ.')}
+          {nb('Vous retirer, endurer, vous suradapter, vous imposer ou faire comme il faut : découvrez le réflexe qui prend le dessus quand un échange se tend.')}
         </p>
         <CtaButton className="btn-vert mt-5" />
         <p className="mt-3 text-mini text-encre/65">Gratuit, 2 minutes, sans création de compte.</p>
       </section>
 
-      {/* 9. Mention */}
-      <footer className="border-t border-encre/10 pt-6">
-        <p className="text-mini text-encre/55">
-          Présence est un outil d’entraînement. Il complète une thérapie ou un accompagnement professionnel, il ne les remplace pas.
-        </p>
-      </footer>
     </div>
   );
 }
