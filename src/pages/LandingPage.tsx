@@ -136,16 +136,21 @@ export default function LandingPage() {
           Une séance guidée, puis un micro-exercice lié à votre profil. À force de pratique, rester calme et dire ce qui compte devient naturel.
         </p>
         {/* Éléments factices : ils imitent l'app, ils ne sont pas cliquables. */}
-        <div className="mt-6 grid select-none gap-3 sm:grid-cols-2" aria-hidden>
-          <div className="flex cursor-default items-center gap-3 rounded-2xl bg-white px-4 py-3.5 text-encre">
+        <div className="mt-6 grid select-none grid-cols-2 gap-3" aria-hidden>
+          <div className="col-span-2 flex cursor-default items-center gap-3 rounded-2xl bg-white px-4 py-3.5 text-encre">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-vert text-white">
               <PlayIcon width={18} height={18} className="ml-0.5" />
             </span>
             <span className="text-corps">Ma séance du jour <span className="whitespace-nowrap">· 5 min</span></span>
           </div>
-          <div className="flex cursor-default items-center justify-between gap-3 rounded-2xl bg-sable px-4 py-3.5 text-encre">
-            <span className="text-corps">Préparer une situation difficile</span>
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/70"><ArrowUpRight /></span>
+          <div className="flex min-h-[112px] cursor-default flex-col justify-between gap-3 rounded-2xl bg-sable p-4 text-encre">
+            <span className="text-corps leading-snug">Préparer une situation difficile</span>
+            <span className="flex h-8 w-8 items-center justify-center self-end rounded-full bg-white/70"><ArrowUpRight /></span>
+          </div>
+          {/* Orange de la charte : réservé au SOS, comme dans l'app. */}
+          <div className="flex min-h-[112px] cursor-default flex-col justify-between gap-3 rounded-2xl bg-sos p-4 text-encre">
+            <span className="text-corps leading-snug">SOS conversation difficile</span>
+            <span className="flex h-8 w-8 items-center justify-center self-end rounded-full bg-white/30"><ArrowUpRight /></span>
           </div>
         </div>
       </section>
