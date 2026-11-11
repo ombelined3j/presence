@@ -17,6 +17,8 @@
   .surtitre { @apply text-mini uppercase tracking-[0.14em] text-vert; }
   .btn-blanc { @apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-corps text-encre transition active:scale-[0.98] disabled:opacity-50; }
   .btn-vert { @apply inline-flex items-center justify-center gap-2 rounded-full bg-vert px-6 py-3.5 text-corps text-white transition active:scale-[0.98] disabled:opacity-50; }
+  /* Orange de la charte : texte encre obligatoire (blanc sur orange : 2,8:1, insuffisant). */
+  .btn-sos { @apply inline-flex items-center justify-center gap-2 rounded-full bg-sos px-6 py-3.5 text-corps text-encre transition active:scale-[0.98] disabled:opacity-50; }
   .btn-encre { @apply inline-flex items-center justify-center gap-2 rounded-full bg-encre px-6 py-3.5 text-corps text-fond transition active:scale-[0.98] disabled:opacity-50; }
   .btn-ligne { @apply inline-flex items-center justify-center gap-2 rounded-full border border-encre/20 px-6 py-3.5 text-corps text-encre transition active:scale-[0.98] disabled:opacity-50; }
   .champ { @apply w-full rounded-2xl border border-encre/15 bg-white px-4 py-3.5 text-corps text-encre placeholder:text-encre/40 focus:border-vert focus:outline-none; }

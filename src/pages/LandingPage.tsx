@@ -87,7 +87,7 @@ export default function LandingPage() {
           <p className="mt-5 hidden text-corps text-encre/80 sm:block">
             5 minutes d’entraînement par jour pour rester calme et stable dans les échanges tendus, poser vos limites sans culpabiliser et moins ressasser après coup, jusqu’à en faire un réflexe. Commencez par découvrir votre profil en conversation difficile.
           </p>
-          <CtaButton className="btn-vert mt-8" />
+          <CtaButton className="btn-sos mt-8" />
           <p className="mt-3 text-mini text-encre/60">Gratuit, 2 minutes, sans création de compte.</p>
         </div>
       </section>
@@ -147,7 +147,7 @@ export default function LandingPage() {
             <span className="text-corps leading-snug">Préparer une situation difficile</span>
             <span className="flex h-8 w-8 items-center justify-center self-end rounded-full bg-white/70"><ArrowUpRight /></span>
           </div>
-          {/* Orange de la charte : réservé au SOS, comme dans l'app. */}
+          
           <div className="flex min-h-[112px] cursor-default flex-col justify-between gap-3 rounded-2xl bg-sos p-4 text-encre">
             <span className="text-corps leading-snug">SOS conversation difficile</span>
             <span className="flex h-8 w-8 items-center justify-center self-end rounded-full bg-white/30"><ArrowUpRight /></span>
