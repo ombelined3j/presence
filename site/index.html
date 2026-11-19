@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Présence Authentique</title>
+  <!-- Description reprise du site actuel -->
+  <meta name="description" content="gagner en solidité et en clarté lors d'une conversation difficile" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400&family=Manrope:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css?v=23" />
+  <script src="/config.js?v=23"></script>
+  <script src="/data/temoignages.js?v=23"></script>
+  <script src="/js/layout.js?v=23" defer></script>
+  <script src="/main.js?v=23" defer></script>
+</head>
+<body data-page-actif="accueil">
+  <div id="layout-header"></div>
+
+  <main id="contenu">
+    <!-- 4.1 Hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero__grid">
+        <div class="hero__text">
+          <!-- Accroche du site actuel ; « conversation » corrigé au pluriel -->
+          <h1 class="hero__title">Abordez les conversations difficiles avec plus de <span class="kw">clarté, de confiance et d’impact.</span></h1>
+          <!-- Texte repris mot pour mot du site actuel (paragraphe sous le titre du hero) -->
+          <p class="lead">Ces conversations  font partie de toute vie relationnelle, qu’elle soit professionnelle ou personnelle.<br />
+          Poser une limite, donner un feedback, exprimer un désaccord, annoncer une décision importante ou demander ce dont vous avez besoin sont des situations qui peuvent susciter du stress, de l’hésitation ou des ruminations.</p>
+          <p class="lead kw">Ces compétences peuvent s’entraîner.</p>
+
+          <div class="cta">
+            <a class="btn" data-link="diagnostic" href="#">Découvrir mon réflexe face aux conversations difficiles <svg class="arrow" aria-hidden="true" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
+            <p class="cta__note">10 questions, diagnostic gratuit.</p>
+          </div>
+
+          <a class="agnes-line" href="#agnes">
+            <img src="/assets/agnes.webp" alt="Portrait d’Agnès Candiotti" width="56" height="56" />
+            <span><span class="kw">Agnès Candiotti</span>, coach professionnelle certifiée.</span>
+          </a>
+        </div>
+
+        <figure class="hero__visual">
+          <span class="circle circle--lilas hero__c1" aria-hidden="true"></span>
+          <div class="hero__photo">
+            <img src="/assets/agnes-header.jpg" alt="Agnès Candiotti en train de parler, la main tendue" width="262" height="270" fetchpriority="high" />
+          </div>
+          <img class="hero__bulle" src="/assets/bulle-lilas.png" alt="" aria-hidden="true" width="267" height="254" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- Logos des organisations, repris de l'image de header fournie -->
+    <section class="logos" aria-label="Logos">
+      <ul class="wrap logos__row">
+        <li><img src="/assets/logos/quebec.jpg" alt="Secrétariat du Conseil du Trésor du Québec" width="200" height="74" loading="lazy" /></li>
+        <li><img src="/assets/logos/education.jpg" alt="Ministère de l’Éducation nationale et de la Jeunesse" width="128" height="74" loading="lazy" /></li>
+        <li><img src="/assets/logos/green-management-school.jpg" alt="Green Management School" width="184" height="74" loading="lazy" /></li>
+        <li><img src="/assets/logos/enercoop.jpg" alt="Enercoop" width="130" height="74" loading="lazy" /></li>
+        <li><img src="/assets/logos/skc-gap-tallard.jpg" alt="SKC Gap Tallard" width="94" height="74" loading="lazy" /></li>
+        <li><img src="/assets/logos/superprof.jpg" alt="Superprof" width="142" height="74" loading="lazy" /></li>
+      </ul>
+    </section>
+
+    <!-- 4.2 Témoignages sous le hero -->
+    <section class="section" aria-labelledby="t-hero-titre">
+      <div class="wrap">
+        <h2 class="h2" id="t-hero-titre">Ce qu’en disent les personnes accompagnées</h2>
+        <div class="cards" data-temoignages="hero"></div>
+        <div class="cta cta--center">
+          <a class="btn" data-link="diagnostic" href="#">Découvrir mon réflexe face aux conversations difficiles <svg class="arrow" aria-hidden="true" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
+          <p class="cta__note">10 questions, diagnostic gratuit.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.3 Section explication (texte repris mot pour mot du site actuel) -->
+    <section class="section" aria-labelledby="pourquoi-titre">
+      <div class="wrap wrap--read">
+        <h2 class="h2" id="pourquoi-titre">Pourquoi est-ce si difficile?</h2>
+        <div class="prose">
+          <p>Lorsqu’une conversation est importante, il ne suffit pas de savoir ce que l’on voudrait dire. L’enjeu émotionnel prend souvent beaucoup de place.</p>
+          <p>Nous pouvons hésiter longtemps, nous adapter excessivement, réagir sous le coup de l’émotion ou perdre nos moyens au moment où nous voudrions être les plus clairs.</p>
+          <p>C’est une réaction humaine face à une situation perçue comme importante. Préparer une conversation, c’est donc bien plus que choisir les bons mots.</p>
+          <p>C’est développer la capacité à rester lucide, à écouter, à exprimer ce qui compte et à ajuster sa manière de communiquer tout au long de l’échange.</p>
+          <p class="kw prose__conclusion">Les conversations difficiles mobilisent un ensemble de compétences relationnelles qui se développent avec la pratique.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.4 Présentation des offres -->
+    <!-- « Commencer ici » : l'application, porte d'entrée par le diagnostic gratuit -->
+    <section class="section offres" aria-labelledby="commencer-titre">
+      <div class="wrap">
+        <h2 class="h2" id="commencer-titre">Commencez ici</h2>
+
+        <!-- Application -->
+        <article class="band band--sable" id="application" aria-labelledby="application-titre">
+          <span class="circle circle--lilas band__deco" aria-hidden="true"></span>
+          <div class="band__body">
+            <h3 class="band__title" id="application-titre">Application</h3>
+            <!-- Accroche du PDF de présentation, réservée à l'application -->
+            <p class="band__accroche">Cette conversation que vous redoutez ? <span class="kw">Préparez-vous à l'avoir.</span></p>
+            <p class="band__case"><span class="band__label">Dans quel cas ?</span> Vous voulez pratiquer en autonomie, 5 minutes chaque matin, ou préparer une situation professionnelle précise.</p>
+            <p class="band__lead">Une séance de 5 minutes chaque matin, sur votre téléphone.</p>
+            <ul class="app-list">
+              <li><span class="app-list__k">Le rappel</span> Une notification le matin, pour vous ancrer avant la journée.</li>
+              <li><span class="app-list__k">La séance du jour</span> Un audio avec la pratique du jour, puis un micro-exercice lié à votre réflexe principal, pour rester calme et stable quand une conversation se tend.</li>
+              <li><span class="app-list__k">Une conversation à préparer ?</span> Choisissez la situation et recevez un audio adapté pour clarifier ce que vous voulez, trouver votre première phrase et rester stable au moment de parler.</li>
+            </ul>
+            <ul class="chips" aria-label="L'offre">
+              <li>Diagnostic gratuit</li>
+              <li>1 semaine offerte</li>
+              <li>Web app, rien à télécharger</li>
+            </ul>
+            <p class="band__mention">Lancement prévu début janvier 2027</p>
+            <div class="cta">
+              <a class="btn" data-link="diagnostic" href="#">Découvrir mon réflexe face aux conversations difficiles <svg class="arrow" aria-hidden="true" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
+              <p class="cta__note">10 questions, diagnostic gratuit.</p>
+            </div>
+            <a class="link-arrow" data-page="application" href="/">Découvrir l’application <svg class="arrow" aria-hidden="true" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
+          </div>
+        </article>
+        <div class="temoignages-app">
+          <h3 class="h3">Ce que disent les personnes accompagnées par Agnès</h3>
+          <div class="cards cards--offre" data-temoignages="application"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Les autres offres -->
+    <section class="section offres offres--suite" aria-label="Les autres offres">
+      <div class="wrap">
+
+        <!-- Dojo -->
+        <article class="band band--lilas" id="dojo" aria-labelledby="dojo-titre">
+          <span class="circle circle--sable band__deco" aria-hidden="true"></span>
+          <div class="band__body">
+            <h3 class="band__title" id="dojo-titre">Dojo Relationnel</h3>
+            <p class="band__case"><span class="band__label">Dans quel cas ?</span> Vous voulez vous entraîner régulièrement avec d'autres personnes, sur des situations réelles.</p>
+            <p class="band__lead">Vous souhaitez développer durablement vos compétences relationnelles.</p>
+            <p>Rejoignez le dojo:<br />un espace d’entraînement ludique et régulier pour pratiquer, expérimenter et progresser au fil de situations réelles.</p>
+            <a class="btn btn--on-color" data-page="dojo" href="#dojo">Découvrir le dojo <svg class="arrow" aria-hidden="true" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
+          </div>
+        </article>
+        <div class="cards cards--offre" data-temoignages="dojo"></div>
+
+        <!-- Coaching -->
+        <article class="band band--vert" id="coaching" aria-labelledby="coaching-titre">
+          <span class="circle circle--lilas band__deco" aria-hidden="true"></span>
+          <div class="band__body">
+            <h3 class="band__title" id="coaching-titre">SOS conversation difficile</h3>
+            <p class="band__case"><span class="band__label">Dans quel cas ?</span> Une conversation difficile est prévue dans les prochains jours, ou le besoin est ponctuel ou urgent.</p>
+            <p class="band__lead">Une conversation importante arrive dans les prochains jours.</p>
+            <p>Préparez-la avec un accompagnement ciblé pour gagner en clarté et en confiance.</p>
+            <a class="btn btn--on-color" data-page="coaching" href="#coaching">Découvrir SOS conversation difficile <svg class="arrow" aria-hidden="true" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
+          </div>
+        </article>
+        <div class="cards cards--offre" data-temoignages="coaching"></div>
+
+        <!-- Immersions -->
+        <article class="band band--orange" id="immersions" aria-labelledby="immersions-titre">
+          <div class="band__body">
+            <h3 class="band__title" id="immersions-titre">Immersions</h3>
+            <p class="band__case"><span class="band__label">Dans quel cas ?</span> Vous voulez vous accorder quelques jours en petit groupe, dans la nature.</p>
+            <p class="band__lead">Vous souhaitez accélérer votre progression.</p>
+            <p>Quelques jours en petit groupe dans une nature privilégiée pour prendre du recul, pratiquer intensivement et intégrer de nouvelles façons d’être en relation.</p>
+            <a class="btn btn--on-color" data-page="immersions" href="#immersions">Découvrir les immersions <svg class="arrow" aria-hidden="true" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
+          </div>
+          <img class="band__photo" src="/assets/offres/immersion-lac.jpg" alt="Lac de montagne vu entre des pins" width="800" height="1067" loading="lazy" decoding="async" />
+        </article>
+        <div class="cards cards--offre" data-temoignages="immersions" data-couleurs="sable,lilas"></div>
+      </div>
+    </section>
+
+    <!-- Vidéos, avant À propos -->
+    <section class="section" aria-labelledby="videos-titre">
+      <div class="wrap"><h2 class="h2 videos__titre" id="videos-titre">Faites connaissance avec Agnès</h2></div>
+      <!-- Vidéos : aucun contenu LinkedIn ou Instagram n'est chargé avant le clic -->
+      <div class="wrap videos videos--seules">
+          <div class="video">
+            <p class="video__intro">Qui je suis</p>
+            <div class="video__frame" data-video="instagram">
+              <button class="video__poster" type="button" data-video-play>
+                <span class="circle circle--lilas video__c1" aria-hidden="true"></span>
+                <span class="circle circle--sable video__c2" aria-hidden="true"></span>
+                <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                <span class="visually-hidden">Lire la vidéo Instagram</span>
+              </button>
+            </div>
+          </div>
+          <div class="video">
+            <p class="video__intro">Professionnel investi, vous trouvez certaines conversations émotionnellement coûteuses ?</p>
+            <div class="video__frame" data-video="linkedin">
+              <button class="video__poster" type="button" data-video-play>
+                <span class="circle circle--sable video__c1" aria-hidden="true"></span>
+                <span class="circle circle--lilas video__c2" aria-hidden="true"></span>
+                <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                <span class="visually-hidden">Lire la vidéo LinkedIn</span>
+              </button>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- 4.6 À propos (texte repris mot pour mot du site actuel) -->
+    <section class="section apropos" id="agnes" aria-labelledby="agnes-titre">
+      <div class="wrap apropos__grid">
+        <img class="apropos__photo" src="/assets/agnes.webp" alt="Portrait d’Agnès Candiotti" width="500" height="748" loading="lazy" decoding="async" />
+        <div class="apropos__text">
+          <h2 class="h2" id="agnes-titre">A Propos</h2>
+          <p>Je suis <span class="kw">Agnès Candiotti</span>, biologiste de formation devenue coach professionnelle certifiée.</p>
+          <p>J’ai constaté au fil des ans que développer une assertivité tranquille était l’enjeu majeur de la plupart de mes clientes. Ayant moi-même cheminé avec cette question pendant des années, je mets mon expertise sur la compréhension du vivant et mes outils somatiques et relationnels au service de leur leadership personnel et relationnel.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.7 Appel à l'action final -->
+    <section class="final" aria-labelledby="final-titre">
+      <span class="circle circle--sable final__c1" aria-hidden="true"></span>
+      <span class="circle circle--lilas final__c2" aria-hidden="true"></span>
+      <div class="wrap final__inner">
+        <!-- Bonhommes : uniquement ici. Chaque couleur correspond à un type de profil du diagnostic.
+             Posés sur une carte claire : l'orange ne touche pas le vert du fond. -->
+        <div class="final__profils"><img src="/assets/bonhommes.png" alt="Cinq personnages de couleurs différentes, une couleur par type de profil" width="800" height="576" loading="lazy" /></div>
+        <h2 class="h2" id="final-titre">Commencez par vous connaître.</h2>
+        <p>Un mini-diagnostic de 10 questions sur vos réflexes face aux situations tendues : vous taire, trop vous adapter, réagir à chaud. Vous découvrez votre réflexe principal.</p>
+        <div class="cta cta--center">
+          <a class="btn" data-link="diagnostic" href="#">Découvrir mon réflexe face aux conversations difficiles <svg class="arrow" aria-hidden="true" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
+          <p class="cta__note">10 questions, diagnostic gratuit.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="layout-footer"></div>
+</body>
+</html>
