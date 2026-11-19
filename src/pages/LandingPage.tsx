@@ -1,65 +1,74 @@
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, PlayIcon } from '../components/Icons';
+import { ArrowRight, ArrowUpRight, CheckIcon } from '../components/Icons';
 import { Wordmark } from '../components/ui';
 import { useAuth } from '../contexts/AuthContext';
-import bulleBeige from '../assets/bulle-beige.png';
-import bulleViolette from '../assets/bulle-violette.png';
+import bulles from '../assets/bulles.png';
+import bonhommes from '../assets/bonhommes.png';
+import arbreLilas from '../assets/arbre-lilas.webp';
+import agnes from '../assets/agnes.webp';
+
+// Charte v2 : sable, lilas et orange pour les cartes (texte encre), vert pour les repères
+// (surtitres, mots clés, séance du jour), encre + blanc pour les appels à l'action uniquement.
+// L'orange ne touche jamais le vert : ni posé dessus, ni dans un bloc voisin.
 
 const CONSTAT = [
-  { title: 'Avant', text: 'Vous cherchez vos mots, vous anticipez, vous vous mettez la pression.' },
-  { title: 'Pendant', text: 'Vous vous justifiez, vous vous excusez trop, ou vous réagissez à chaud.' },
-  { title: 'Après', text: 'Vous ressassez ce qui a été dit, et vous vous critiquez.' },
+  { title: 'Avant', text: 'Vous cherchez vos mots, vous anticipez, vous vous mettez la pression.', bg: 'bg-sable' },
+  { title: 'Pendant', text: 'Vous vous justifiez, vous vous excusez trop, ou vous réagissez à chaud.', bg: 'bg-lilas' },
+  { title: 'Après', text: 'Vous ressassez ce qui a été dit, et vous vous critiquez.', bg: 'bg-orange' },
 ];
 
 const STEPS = [
   {
-    n: '1',
+    n: '01',
     title: 'Découvrez votre profil',
-    text: '7 questions pour savoir quel réflexe prend le dessus quand un échange se tend : vous retirer, endurer, vous suradapter, vous imposer ou faire comme il faut. Gratuit, sans compte.',
+    text: '10 questions pour savoir quel réflexe prend le dessus quand un échange se tend : vous retirer, endurer, vous suradapter, vous imposer ou faire comme il faut. Gratuit, sans compte.',
   },
   {
-    n: '2',
+    n: '02',
     title: 'Entraînez-vous 5 minutes chaque matin',
-    text: 'Un rappel le matin, puis une séance guidée et un micro-exercice adaptés à votre profil, pour rester calme et stable quand une conversation se tend.',
+    text: 'Un rappel le matin, puis une séance guidée et un micro-exercice adaptés à votre profil.',
   },
   {
-    n: '3',
+    n: '03',
     title: 'Préparez les conversations qui comptent',
-    text: 'Une conversation approche ? Choisissez la situation et recevez une séance pour clarifier ce que vous voulez, trouver votre première phrase et rester stable au moment de parler.',
+    text: 'Choisissez la situation et recevez une séance pour clarifier ce que vous voulez, trouver votre première phrase et rester stable au moment de parler.',
   },
 ];
 
 const SITUATIONS = [
-  'Répondre à une remarque déplacée',
-  'Dire non à une demande insistante',
-  'Recevoir une critique de votre manager',
-  'Donner un feedback négatif à un collaborateur',
-  'Demander une augmentation',
-  'Exprimer une frustration gardée pour vous',
+  'Poser une limite',
+  'Réparer le lien',
+  'Oser exprimer ce qui compte',
+  'Convaincre et négocier',
+  'Confronter l’autre à la réalité',
+  'Accueillir avec discernement',
+  'Traverser les désaccords',
 ];
 
 const BENEFITS = [
-  { title: 'Rester stable', text: 'Garder votre calme quand une conversation se tend.', color: 'bg-sable' },
-  { title: 'Oser dire', text: 'Poser vos limites et exprimer vos besoins sans culpabiliser.', color: 'bg-lilas' },
-  { title: 'Moins ressasser', text: 'Moins rejouer la scène après coup, et moins vous critiquer.', color: 'bg-vert text-white' },
+  { title: 'Rester stable', text: 'Garder votre calme quand une conversation se tend.' },
+  { title: 'Oser dire', text: 'Poser vos limites et exprimer vos besoins sans culpabiliser.' },
+  { title: 'Moins ressasser', text: 'Moins rejouer la scène après coup, et moins vous critiquer.' },
 ];
 
-// Couleurs de la charte pour les séries de 3 cartes (l'orange reste réservé au SOS).
-const TRIO = [
-  { bg: 'bg-sable', title: 'text-encre', text: 'text-encre/80', dot: 'bg-vert' },
-  { bg: 'bg-lilas', title: 'text-encre', text: 'text-encre/80', dot: 'bg-vert' },
-  { bg: 'bg-vert', title: 'text-white', text: 'text-white/90', dot: 'bg-white' },
+const OFFRE = [
+  { label: 'Diagnostic gratuit', bg: 'bg-sable' },
+  { label: '1 semaine de pratique offerte', bg: 'bg-lilas' },
+  { label: 'Sans engagement', bg: 'bg-white' },
+  { label: 'Web app, rien à télécharger', bg: 'bg-white' },
 ];
-
-const OFFRE = ['Diagnostic gratuit', '1 semaine de pratique offerte', 'Sans engagement'];
 
 // Espace insécable avant « ? » et « : » (typographie française, évite un signe seul en début de ligne).
 const nb = (s: string) => s.replace(/ ([?:!;])/g, ' $1');
 
+// Mot clé en vert, sans gras (charte).
+const K = ({ children }: { children: ReactNode }) => <span className="text-vert">{children}</span>;
+
 export default function LandingPage() {
   const { user } = useAuth();
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col gap-20">
       <header className="flex items-center justify-between">
         <Wordmark />
         <Link to={user ? '/app' : '/connexion'} className="text-mini text-vert underline-offset-4 hover:underline">
@@ -67,57 +76,56 @@ export default function LandingPage() {
         </Link>
       </header>
 
-      {/* 1. Hero */}
-      <section className="relative -mt-6 pt-24 sm:pt-32">
-        {/* Bulles décoratives à droite, derrière le texte, dans la zone au-dessus du titre :
-            elles ne touchent aucun mot du titre, en mobile comme en desktop. */}
-        <div className="pointer-events-none absolute right-0 top-0 z-0 h-24 w-[136px] sm:h-32 sm:w-[184px]" aria-hidden>
-          <img src={bulleBeige} alt="" className="absolute bottom-1 right-0 w-24 sm:w-32" />
-          <img src={bulleViolette} alt="" className="absolute left-0 top-0 w-12 sm:w-16" />
-        </div>
-        <div className="relative z-10">
-          <p className="surtitre">Pour managers et leaders</p>
-          <h1 className="mt-3 text-[40px] leading-[1.05] sm:text-hero">
-            {nb('Cette conversation que vous redoutez ?')} <span className="text-vert">Préparez-vous à l’avoir.</span>
-          </h1>
-          {/* La version longue fait 6 lignes à 375 px : sur mobile, version courte. */}
-          <p className="mt-5 text-corps text-encre/80 sm:hidden">
-            5 minutes d’entraînement par jour pour rester calme dans les échanges tendus et poser vos limites sans culpabiliser, jusqu’à en faire un réflexe. Commencez par découvrir votre profil.
-          </p>
-          <p className="mt-5 hidden text-corps text-encre/80 sm:block">
-            5 minutes d’entraînement par jour pour rester calme et stable dans les échanges tendus, poser vos limites sans culpabiliser et moins ressasser après coup, jusqu’à en faire un réflexe. Commencez par découvrir votre profil en conversation difficile.
-          </p>
-          <CtaButton className="btn-sos mt-8" />
-          <p className="mt-3 text-mini text-encre/60">Gratuit, 2 minutes, sans création de compte.</p>
-        </div>
+      {/* 1. Hero : promesse, CTA, puis visuel apaisant */}
+      <section className="relative -mt-8">
+        {/* Bulles de dialogue au-dessus du titre, à droite : elles ne touchent aucun mot. */}
+        <img src={bulles} alt="" aria-hidden className="pointer-events-none ml-auto block w-28 sm:w-36" />
+        <p className="surtitre mt-2">Pour managers et leaders</p>
+        <h1 className="mt-3 text-[40px] leading-[1.05] sm:text-hero">
+          {nb('Cette conversation que vous redoutez ?')} <K>Préparez-vous à l’avoir.</K>
+        </h1>
+        <p className="mt-5 text-corps text-encre/80">
+          5 minutes d’entraînement par jour pour rester calme dans les échanges tendus, poser vos limites sans culpabiliser et moins ressasser après coup.
+        </p>
+        <CtaButton className="mt-8" />
+        <p className="mt-3 text-mini text-encre/60">Gratuit, 2 minutes, sans création de compte.</p>
+
+        <figure className="relative mt-10 overflow-hidden rounded-carte">
+          <img src={arbreLilas} alt="" aria-hidden className="aspect-[4/3] w-full object-cover sm:aspect-[16/9]" />
+          <figcaption className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-mini text-encre">
+            <span className="h-2 w-2 rounded-full bg-vert" aria-hidden />
+            Séance du jour · 5 min
+          </figcaption>
+        </figure>
       </section>
 
-      {/* 2. Le constat */}
+      {/* 2. Le constat : les trois couleurs de cartes */}
       <section aria-labelledby="constat">
-        <p className="surtitre">Le constat</p>
-        <h2 id="constat" className="mt-3 font-titre text-titre">
-          Vous avez déjà beaucoup appris. Le plus dur, c’est le moment venu.
-        </h2>
+        <SectionTitle id="constat" kicker="Le constat">
+          Vous avez déjà beaucoup appris. Le plus dur, c’est <K>le moment venu.</K>
+        </SectionTitle>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          {CONSTAT.map((c, i) => (
-            <div key={c.title} className={`rounded-carte p-5 ${TRIO[i].bg}`}>
-              <h3 className={`font-titre text-carte ${TRIO[i].title}`}>{c.title}</h3>
-              <p className={`mt-2 text-mini ${TRIO[i].text}`}>{c.text}</p>
+          {CONSTAT.map((c) => (
+            <div key={c.title} className={`flex min-h-[148px] flex-col justify-between gap-6 rounded-carte p-5 text-encre ${c.bg}`}>
+              <h3 className="font-titre text-carte">{c.title}</h3>
+              <p className="text-mini">{c.text}</p>
             </div>
           ))}
         </div>
         <p className="mt-6 text-corps text-encre/80">
-          {nb('Ce qui manque, ce n’est pas la théorie. C’est la pratique : un entraînement régulier, quand vous voulez, où vous voulez.')}
+          {nb('Ce qui manque, ce n’est pas la théorie : c’est la pratique. Un entraînement régulier, quand vous voulez, où vous voulez.')}
         </p>
       </section>
 
       {/* 3. Comment ça marche */}
       <section aria-labelledby="comment">
-        <p id="comment" className="surtitre">Comment ça marche</p>
-        <ol className="mt-4 flex flex-col gap-3">
+        <SectionTitle id="comment" kicker="Comment ça marche">
+          On commence par <K>vous connaître.</K>
+        </SectionTitle>
+        <ol className="mt-6 flex flex-col gap-3">
           {STEPS.map((s) => (
-            <li key={s.n} className="flex gap-4 rounded-carte bg-surface p-5">
-              <span className="font-titre text-[28px] leading-none text-vert">{s.n}</span>
+            <li key={s.n} className="flex gap-4 rounded-carte border border-encre/10 bg-white p-5">
+              <span className="pt-0.5 font-titre text-carte font-light text-vert">{s.n}</span>
               <div>
                 <h3 className="font-titre text-carte">{s.title}</h3>
                 <p className="mt-1 text-mini text-encre/75">{nb(s.text)}</p>
@@ -127,91 +135,127 @@ export default function LandingPage() {
         </ol>
       </section>
 
-      {/* 4. Aperçu de l'écran « Séance du jour » */}
-      <section className="relative overflow-hidden rounded-carte bg-vert p-6 text-white" aria-label="Aperçu de la séance du jour">
-        <img src={bulleViolette} alt="" aria-hidden className="pointer-events-none absolute right-5 top-5 w-11" />
-        <p className="text-mini text-white/75">Séance du jour · 5 min</p>
-        <h2 className="mt-1 pr-14 font-titre text-[26px] leading-tight">Chaque matin, une séance pensée pour vous.</h2>
-        <p className="mt-3 text-corps text-white/85">
-          Une séance guidée, puis un micro-exercice lié à votre profil. À force de pratique, rester calme et dire ce qui compte devient naturel.
-        </p>
-        {/* Éléments factices : ils imitent l'app, ils ne sont pas cliquables. */}
-        <div className="mt-6 grid select-none grid-cols-2 gap-3" aria-hidden>
-          <div className="col-span-2 flex cursor-default items-center gap-3 rounded-2xl bg-white px-4 py-3.5 text-encre">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-vert text-white">
-              <PlayIcon width={18} height={18} className="ml-0.5" />
+      {/* 4. Aperçu de l'accueil de l'app (éléments factices, non cliquables) */}
+      <section aria-labelledby="apercu">
+        <SectionTitle id="apercu" kicker="Dans l’app">
+          Une séance de <K>5 minutes</K>, rien que pour vous.
+        </SectionTitle>
+        <div className="mt-6 select-none rounded-ecran border-[6px] border-white bg-surface p-4 shadow-[0_12px_40px_-20px_rgba(47,51,36,0.25)] sm:p-6" aria-hidden>
+          <div className="relative overflow-hidden rounded-carte bg-vert p-5 text-white">
+            <span className="absolute -right-5 -top-5 h-20 w-20 rounded-full bg-lilas" />
+            <p className="text-mini text-white/80">Séance du jour · 5 min</p>
+            <p className="mt-1 max-w-[16rem] font-titre text-carte">Rester calme quand une conversation se tend</p>
+            <span className="mt-5 inline-flex cursor-default items-center gap-2 rounded-full bg-encre px-5 py-2.5 text-mini text-white">
+              Commencer <ArrowUpRight />
             </span>
-            <span className="text-corps">Ma séance du jour <span className="whitespace-nowrap">· 5 min</span></span>
           </div>
-          <div className="flex min-h-[112px] cursor-default flex-col justify-between gap-3 rounded-2xl bg-sable p-4 text-encre">
-            <span className="text-corps leading-snug">Préparer une situation difficile</span>
-            <span className="flex h-8 w-8 items-center justify-center self-end rounded-full bg-white/70"><ArrowUpRight /></span>
-          </div>
-          
-          <div className="flex min-h-[112px] cursor-default flex-col justify-between gap-3 rounded-2xl bg-sos p-4 text-encre">
-            <span className="text-corps leading-snug">SOS conversation difficile</span>
-            <span className="flex h-8 w-8 items-center justify-center self-end rounded-full bg-white/30"><ArrowUpRight /></span>
+          <div className="mt-3 grid grid-cols-2 gap-3">
+            <Tile bg="bg-sable" label="Préparer une situation" />
+            <Tile bg="bg-lilas" label="Pratiquer en dojo" />
           </div>
         </div>
+        <p className="mt-5 text-corps text-encre/80">
+          Chaque matin, la séance du jour vous attend. Une conversation approche ? Préparez-la en quelques minutes.
+        </p>
       </section>
 
       {/* 5. Situations */}
       <section aria-labelledby="situations">
-        <p className="surtitre">Pour les conversations qui comptent</p>
-        <h2 id="situations" className="mt-3 font-titre text-titre">Au travail comme dans la vie personnelle.</h2>
+        <SectionTitle id="situations" kicker="Pour les conversations qui comptent">
+          <K>7 types de situations</K>, au travail comme dans la vie personnelle.
+        </SectionTitle>
         <ul className="mt-6 flex flex-wrap gap-2">
           {SITUATIONS.map((s) => (
             <li key={s} className="rounded-full border border-encre/10 bg-white px-4 py-2.5 text-mini text-encre">{s}</li>
           ))}
         </ul>
-        <p className="mt-5 text-corps text-encre/80">7 types de situations. Vous choisissez, la séance s’adapte.</p>
+        <p className="mt-5 text-corps text-encre/80">Vous choisissez la situation, la séance s’adapte.</p>
       </section>
 
       {/* 6. Ce que vous y gagnez */}
-      <section>
-        <p className="surtitre">Ce que vous y gagnez</p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+      <section aria-labelledby="gains">
+        <SectionTitle id="gains" kicker="Ce que vous y gagnez">
+          Rester stable, <K>même quand ça se tend.</K>
+        </SectionTitle>
+        <ul className="mt-6 flex flex-col divide-y divide-encre/10 rounded-carte border border-encre/10 bg-white">
           {BENEFITS.map((b) => (
-            <div key={b.title} className={`rounded-carte p-5 ${b.color}`}>
-              <h3 className="font-titre text-carte">{b.title}</h3>
-              <p className={`mt-1 text-mini ${b.color.includes('bg-vert') ? 'text-white/90' : 'text-encre/80'}`}>{b.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 7. L'offre */}
-      <section aria-labelledby="offre" className="rounded-carte bg-surface p-6">
-        <h2 id="offre" className="font-titre text-[26px] leading-tight">Une offre simple, pour commencer en douceur.</h2>
-        <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-          {OFFRE.map((o, i) => (
-            <li key={o} className={`flex items-center gap-3 rounded-2xl px-4 py-3.5 text-corps ${TRIO[i].bg} ${TRIO[i].title}`}>
-              <span className={`h-2 w-2 shrink-0 rounded-full ${TRIO[i].dot}`} aria-hidden />
-              {o}
+            <li key={b.title} className="flex gap-4 p-5">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-vert text-white" aria-hidden>
+                <CheckIcon width={16} height={16} />
+              </span>
+              <div>
+                <h3 className="font-titre text-carte">{b.title}</h3>
+                <p className="mt-1 text-mini text-encre/75">{b.text}</p>
+              </div>
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-mini text-encre/65">Web app, rien à télécharger.</p>
       </section>
 
-      {/* 8. Appel final */}
-      <section className="rounded-carte bg-sable p-6">
-        <h2 className="font-titre text-[26px] leading-tight">Commencez par découvrir votre profil.</h2>
-        <p className="mt-2 text-corps text-encre/80">
+      {/* 7. Qui vous accompagne */}
+      <section aria-labelledby="agnes" className="overflow-hidden rounded-carte bg-sable sm:grid sm:grid-cols-[200px_1fr]">
+        <img src={agnes} alt="Agnès" className="aspect-[4/3] w-full object-cover object-[50%_20%] sm:aspect-auto sm:h-full" />
+        <div className="p-6">
+          <p className="text-mini uppercase tracking-[0.14em] text-encre/70">Qui vous accompagne</p>
+          <h2 id="agnes" className="mt-3 font-titre text-titre">Agnès</h2>
+          <p className="mt-3 text-corps text-encre/85">
+            Si une situation est trop lourde pour être préparée en quelques minutes, vous pouvez réserver une séance SOS directement avec elle.
+          </p>
+        </div>
+      </section>
+
+      {/* 8. L'offre */}
+      <section aria-labelledby="offre">
+        <SectionTitle id="offre" kicker="L’offre">
+          Une offre <K>simple</K>, pour commencer en douceur.
+        </SectionTitle>
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {OFFRE.map((o) => (
+            <li key={o.label} className={`rounded-full px-4 py-2.5 text-mini text-encre ${o.bg} ${o.bg === 'bg-white' ? 'border border-encre/10' : ''}`}>
+              {o.label}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* 9. Appel final */}
+      <section className="rounded-carte bg-surface px-6 pb-8 pt-10 text-center">
+        <img src={bonhommes} alt="" aria-hidden className="mx-auto w-48 sm:w-56" />
+        <h2 className="mx-auto mt-8 max-w-md font-titre text-titre">
+          Commencez par <K>découvrir votre profil.</K>
+        </h2>
+        <p className="mx-auto mt-3 max-w-md text-corps text-encre/80">
           {nb('Vous retirer, endurer, vous suradapter, vous imposer ou faire comme il faut : découvrez le réflexe qui prend le dessus quand un échange se tend.')}
         </p>
-        <CtaButton className="btn-encre mt-5" />
-        <p className="mt-3 text-mini text-encre/65">Gratuit, 2 minutes, sans création de compte.</p>
+        <CtaButton className="mt-6 items-center" />
+        <p className="mt-3 text-mini text-encre/60">Gratuit, 2 minutes, sans création de compte.</p>
       </section>
-
     </div>
   );
 }
 
-function CtaButton({ className }: { className: string }) {
+function SectionTitle({ id, kicker, children }: { id: string; kicker: string; children: ReactNode }) {
   return (
-    <div className="flex flex-col sm:flex-row">
-      <Link to="/diagnostic" className={className}>
+    <>
+      <p className="surtitre">{kicker}</p>
+      <h2 id={id} className="mt-3 font-titre text-titre">{children}</h2>
+    </>
+  );
+}
+
+function Tile({ bg, label }: { bg: string; label: string }) {
+  return (
+    <div className={`flex min-h-[116px] cursor-default flex-col justify-between gap-3 rounded-carte p-4 text-encre ${bg}`}>
+      <span className="text-corps leading-snug">{label}</span>
+      <span className="flex h-8 w-8 items-center justify-center self-end rounded-full bg-white/70"><ArrowUpRight /></span>
+    </div>
+  );
+}
+
+function CtaButton({ className = '' }: { className?: string }) {
+  return (
+    <div className={`flex flex-col sm:flex-row ${className.includes('items-center') ? 'sm:justify-center' : ''} ${className}`}>
+      <Link to="/diagnostic" className="btn-encre">
         Découvrir mon profil <ArrowRight />
       </Link>
     </div>

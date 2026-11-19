@@ -8,9 +8,11 @@ export default {
         surface: '#FBF8F3',
         encre: '#2F3324',
         sable: '#E4D3A6',
-        lilas: '#C3B4F2',
-        vert: '#506662',
-        sos: '#FF6B2C',
+        lilas: '#C8B5E6',
+        vert: '#516658',
+        orange: '#E9884D',
+        // Alias historique : le SOS utilise l'orange de la charte.
+        sos: '#E9884D',
       },
       fontFamily: {
         titre: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
