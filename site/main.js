@@ -18,6 +18,7 @@
     var key = a.getAttribute("data-link");
     if (key === "diagnostic") a.href = withUtm(C.LINKS.diagnostic);
     else if (key === "app") a.href = C.LINKS.app;
+    else if (key === "connexion") a.href = C.LINKS.connexion;
     else if (key === "newsletter") a.href = C.NEWSLETTER_URL;
   });
   document.querySelectorAll("[data-page]").forEach(function (a) {

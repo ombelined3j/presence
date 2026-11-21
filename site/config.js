@@ -25,4 +25,5 @@ window.PA_CONFIG = {
 window.PA_CONFIG.LINKS = {
   app: window.PA_CONFIG.APP_URL + "/",
   diagnostic: window.PA_CONFIG.APP_URL + "/diagnostic",
+  connexion: window.PA_CONFIG.APP_URL + "/connexion",
 };

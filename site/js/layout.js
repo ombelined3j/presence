@@ -28,6 +28,7 @@
     '<nav class="nav" id="menu" aria-label="Navigation principale"><ul class="nav__list">' +
     ONGLETS.map(function (o) { return "<li>" + lien(o) + "</li>"; }).join("") +
     "</ul>" +
+    '<a class="nav__login" data-link="connexion" href="#">Se connecter</a>' +
     '<a class="btn btn--small" data-link="diagnostic" href="#">Diagnostic gratuit ' + ARROW + "</a>" +
     "</nav></div></header>";
 
@@ -41,6 +42,7 @@
     '<nav aria-label="Navigation du pied de page"><ul class="footer__nav">' +
     ONGLETS.map(function (o) { return "<li>" + lien(o) + "</li>"; }).join("") +
     '<li><a data-link="diagnostic" href="#">Diagnostic gratuit</a></li>' +
+    '<li><a data-link="connexion" href="#">Se connecter</a></li>' +
     "</ul></nav>" +
     "</div></footer>" +
     '<div class="mobile-bar"><a class="btn btn--block" data-link="diagnostic" href="#">Découvrir mon réflexe face aux conversations difficiles ' + ARROW + "</a></div>";
