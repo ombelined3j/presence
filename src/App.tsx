@@ -3,13 +3,13 @@ import { GuestOnly, ProtectedLayout, PublicLayout } from './components/Layouts';
 import { AuthProvider } from './contexts/AuthContext';
 import AdminPage from './pages/AdminPage';
 import CenteringSessionPage from './pages/CenteringSessionPage';
+import HomeRedirect from './components/HomeRedirect';
 import DashboardPage from './pages/DashboardPage';
 import DiagnosticPage from './pages/DiagnosticPage';
 import DiagnosticResultPage from './pages/DiagnosticResultPage';
 import DojoExercisePage from './pages/DojoExercisePage';
 import DojoPage from './pages/DojoPage';
 import FocusPage from './pages/FocusPage';
-import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import PrepareSituationPage from './pages/PrepareSituationPage';
 import ProfilePage from './pages/ProfilePage';
@@ -24,7 +24,7 @@ export default function App() {
         <Routes>
           {/* Public */}
           <Route element={<PublicLayout />}>
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<HomeRedirect />} />
             <Route path="/diagnostic" element={<DiagnosticPage />} />
             <Route path="/diagnostic/resultat" element={<DiagnosticResultPage />} />
             <Route path="/inscription" element={<GuestOnly><SignUpPage /></GuestOnly>} />
