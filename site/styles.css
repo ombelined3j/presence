@@ -261,6 +261,7 @@ p { margin: 0 0 1em; }
 .videos { display: grid; gap: 40px; justify-items: center; margin-top: 56px; }
 .videos--seules { margin-top: 0; }
 .videos__titre { text-align: center; }
+.reseaux__logo { width: 22px; height: 22px; border-radius: 22%; flex: none; }
 .reseaux { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 40px; }
 .videos__todo { justify-self: start; }
 .video { width: 100%; max-width: 504px; }
