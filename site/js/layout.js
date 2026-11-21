@@ -23,7 +23,18 @@
     return '<a data-page="' + o.page + '" href="/"' + current + ">" + o.label + "</a>";
   }
 
-  var header =
+  // Vue depuis l'adresse de l'app : page d'atterrissage, sans menu.
+  // Seulement le diagnostic (action principale) et « Me connecter ».
+  var headerApp =
+    '<a class="skip" href="#contenu">Aller au contenu</a>' +
+    '<header class="header header--landing"><div class="header__inner wrap">' +
+    '<span class="brand">Présence Authentique</span>' +
+    '<div class="header__actions">' +
+    '<a class="btn btn--small btn--outline" data-link="connexion" href="#">Me connecter</a>' +
+    '<a class="btn btn--small header__cta" data-link="diagnostic" href="#">Découvrir mon réflexe face aux conversations difficiles ' + ARROW + "</a>" +
+    "</div></div></header>";
+
+  var headerSite =
     '<a class="skip" href="#contenu">Aller au contenu</a>' +
     '<header class="header"><div class="header__inner wrap">' +
     '<a class="brand" href="' + accueil + '">Présence Authentique</a>' +
@@ -32,9 +43,10 @@
     '<nav class="nav" id="menu" aria-label="Navigation principale"><ul class="nav__list">' +
     ONGLETS.map(function (o) { return "<li>" + lien(o) + "</li>"; }).join("") +
     "</ul>" +
-    (connexion ? '<a class="nav__login" data-link="connexion" href="#">Se connecter</a>' : "") +
     '<a class="btn btn--small" data-link="diagnostic" href="#">Diagnostic gratuit ' + ARROW + "</a>" +
     "</nav></div></header>";
+
+  var header = connexion ? headerApp : headerSite;
 
   var footer =
     '<footer class="footer"><div class="wrap footer__grid">' +
@@ -43,11 +55,11 @@
     '<div><p class="footer__label">Localisation</p><p>75019 Paris<br />05000 Gap</p>' +
     '<p class="footer__label">Contact</p>' +
     '<p><a href="mailto:agnes@presenceauthentique.com?subject=Contact">agnes@presenceauthentique.com</a><br /><a href="tel:+33688599079">06 88 59 90 79</a></p></div>' +
-    '<nav aria-label="Navigation du pied de page"><ul class="footer__nav">' +
-    ONGLETS.map(function (o) { return "<li>" + lien(o) + "</li>"; }).join("") +
-    '<li><a data-link="diagnostic" href="#">Diagnostic gratuit</a></li>' +
-    (connexion ? '<li><a data-link="connexion" href="#">Se connecter</a></li>' : "") +
-    "</ul></nav>" +
+    (connexion ? "" :
+      '<nav aria-label="Navigation du pied de page"><ul class="footer__nav">' +
+      ONGLETS.map(function (o) { return "<li>" + lien(o) + "</li>"; }).join("") +
+      '<li><a data-link="diagnostic" href="#">Diagnostic gratuit</a></li>' +
+      "</ul></nav>") +
     "</div></footer>" +
     '<div class="mobile-bar"><a class="btn btn--block" data-link="diagnostic" href="#">Découvrir mon réflexe face aux conversations difficiles ' + ARROW + "</a></div>";
 

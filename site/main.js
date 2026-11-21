@@ -82,17 +82,20 @@
   // Menu mobile.
   var toggle = document.querySelector(".menu-toggle");
   var header = document.querySelector(".header");
-  toggle.addEventListener("click", function () {
-    var open = header.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    toggle.querySelector(".visually-hidden").textContent = open ? "Fermer le menu" : "Ouvrir le menu";
-  });
-  document.querySelectorAll(".nav a").forEach(function (a) {
-    a.addEventListener("click", function () {
-      header.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
+  // Pas de menu sur la page d'atterrissage de l'app.
+  if (toggle && header) {
+    toggle.addEventListener("click", function () {
+      var open = header.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.querySelector(".visually-hidden").textContent = open ? "Fermer le menu" : "Ouvrir le menu";
     });
-  });
+    document.querySelectorAll(".nav a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        header.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 
   // Vidéos LinkedIn et Instagram : l'iframe n'est chargée qu'au clic
   // (aucun contenu ni script LinkedIn ou Instagram avant).

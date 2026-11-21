@@ -4,13 +4,15 @@
 // La page Application est aussi affichée à l'adresse de l'app (réécriture Vercel du projet app) :
 // les liens vers le site sont donc absolus quand la page est vue depuis l'app.
 var PA_APP_URL = "https://presence-authentique-app.vercel.app";
+// « ?vue=app » permet de prévisualiser en local la version vue depuis l'app.
+var PA_SUR_APP = location.origin === PA_APP_URL || /[?&]vue=app\b/.test(location.search);
 var PA_SITE_URL = location.origin === PA_APP_URL ? "https://presence-authentique-site.vercel.app" : "";
 
 window.PA_CONFIG = {
   APP_URL: PA_APP_URL,
   SITE_URL: PA_SITE_URL,
   // Vrai quand la page est affichée à l'adresse de l'app (seul cas où « Se connecter » apparaît).
-  SUR_APP: location.origin === PA_APP_URL,
+  SUR_APP: PA_SUR_APP,
 
   // Pages des offres. La page Application vit à l'adresse de l'app.
   PAGES: {

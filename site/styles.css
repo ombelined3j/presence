@@ -103,6 +103,15 @@ p { margin: 0 0 1em; }
 .header .wrap { max-width: 1320px; }
 .header__inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 16px; }
 .brand { font-family: var(--titre); font-size: 20px; text-decoration: none; white-space: nowrap; }
+/* En-tête de la page d'atterrissage (adresse de l'app) : deux actions, pas de menu. */
+.header__actions { display: flex; align-items: center; gap: 12px; }
+.header__actions .btn { white-space: nowrap; }
+.header--landing .header__cta { display: none; }
+@media (min-width: 1240px) { .header--landing .header__cta { display: inline-flex; } }
+@media (max-width: 420px) {
+  .header--landing .brand { font-size: 17px; }
+  .header--landing .btn--small { min-height: 40px; padding: 8px 14px; font-size: 14px; }
+}
 .menu-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0; background: transparent; border-radius: 50%; cursor: pointer; color: var(--encre); }
 .menu-toggle__bars, .menu-toggle__bars::before, .menu-toggle__bars::after { display: block; width: 22px; height: 1.6px; background: currentColor; border-radius: 2px; position: relative; transition: transform .2s ease, opacity .2s ease; }
 .menu-toggle__bars::before, .menu-toggle__bars::after { content: ""; position: absolute; left: 0; }
