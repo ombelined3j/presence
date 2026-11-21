@@ -106,7 +106,7 @@
     (p.surtitre ? '<p class="hero__surtitre">' + esc(p.surtitre) + "</p>" : "") +
     '<h1 class="o-hero__titre">' + esc(p.titre) + "</h1>" +
     (p.texte || []).map(function (t) { return '<p class="' + (t.lead ? "o-lead" : "o-texte") + '">' + t.html + "</p>"; }).join("") +
-    (p.pourQui ? '<p class="o-encart"><span class="band__label">Pour qui</span> ' + p.pourQui + "</p>" : "") +
+    (p.pourQui ? '<p class="o-encart"><span class="band__label">' + esc(p.pourQuiLabel || "Pour qui") + '</span> ' + p.pourQui + "</p>" : "") +
     (p.dansQuelCas ? '<p class="o-encart"><span class="band__label">Dans quel cas ?</span> ' + esc(p.dansQuelCas) + "</p>" : "") +
     // La mention (ex. date de lancement) s'affiche juste au-dessus du bouton.
     (p.mention ? '<p class="o-mention">' + esc(p.mention) + "</p>" : "") +

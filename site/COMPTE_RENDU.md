@@ -301,3 +301,14 @@ Décision d'Ombeline : l'application vise uniquement les conversations professio
 - « Ce que vous y gagnez » : nouvelle carte « Gagner en performance » (« Mieux négocier, mieux vivre vos relations professionnelles au quotidien et gagner en performance dans votre vie professionnelle. »).
 - Restent tels quels : « Je partage quelque chose d'important, de personnel ou de vulnérable. » (« personnel » au sens d'intime, à valider), et les témoignages (mots des clients).
 - La page d'accueil de l'app React n'est pas modifiée (décision d'Ombeline : le site seul). Elle parle encore de « 7 types de situations, au travail comme dans la vie personnelle ».
+
+## Application : cible suggérée, sans la nommer (21/11)
+
+Décision d'Ombeline : ne plus écrire « managers et leaders » ni « formation ou coaching » en toutes lettres. La cible est suggérée par les situations citées. L'argument central devient la pratique quotidienne, présentée comme un complément aux accompagnements ponctuels, sans dire qu'elle les remplace.
+
+- Surtitre : « Application d'entraînement quotidien ».
+- Titre : inchangé.
+- Texte de présentation : « Savoir comment poser une limite, recadrer ou défendre une décision ne suffit pas toujours au moment où la conversation se tend. Ce qui fait la différence, c’est la pratique : 5 minutes par jour, sur votre téléphone, pour rester stable dans vos échanges professionnels et moins ressasser après coup. »
+- L'encart « Pour qui » devient « Pourquoi chaque jour » (nouveau champ `pourQuiLabel`, « Pour qui » par défaut sur les autres pages) : « Une formation ou un accompagnement vous donne des clés. Mais une compétence relationnelle se construit comme une compétence physique : par la répétition. Sans pratique régulière, ce que l’on a compris reste théorique, et les anciens réflexes reviennent dès que la tension monte. L’application vous offre cette pratique, chaque jour, pour découvrir ces réflexes ou ancrer ce que vous avez déjà travaillé. » (« par la répétition » en vert)
+- Dans quel cas ? (page Application et bande Application de l'accueil) : « Vos journées comptent des échanges à fort enjeu : un feedback à donner, une décision à défendre, une négociation à mener. Vous voulez vous entraîner chaque jour en autonomie, ou préparer une conversation précise. »
+- La page Notion Acquisition indique encore que « les supports parlent de managers et leaders » (décision du 30/10) : à mettre à jour.

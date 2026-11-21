@@ -5,13 +5,14 @@
 window.PA_OFFRE = {
   cle: "application",
   presentation: {
-    surtitre: "Application d'entraînement pour managers et leaders",
+    surtitre: "Application d'entraînement quotidien",
     titre: "Une séance de 5 minutes par jour, sur votre téléphone.",
     texte: [
-      { html: "Votre entraînement personnalisé, en 5 minutes par jour, pour exprimer facilement ce qui semblait difficile dans vos échanges professionnels et moins ressasser après coup." },
+      { html: "Savoir comment poser une limite, recadrer ou défendre une décision ne suffit pas toujours au moment où la conversation se tend. Ce qui fait la différence, c’est la pratique : 5 minutes par jour, sur votre téléphone, pour rester stable dans vos échanges professionnels et moins ressasser après coup." },
     ],
-    pourQui: "Les managers et leaders qui souhaitent <span class=\"kw\">ancrer ce qu’ils ont appris en formation ou en coaching ponctuel</span> et souhaitent pratiquer les conversations difficiles dans leur vie professionnelle : mieux négocier, mieux convaincre, mieux vivre leurs relations professionnelles au quotidien et gagner en performance.",
-    dansQuelCas: "Vous voulez pratiquer en autonomie, 5 minutes par jour, ou préparer une situation professionnelle précise.",
+    pourQuiLabel: "Pourquoi chaque jour",
+    pourQui: "Une formation ou un accompagnement vous donne des clés. Mais une compétence relationnelle se construit comme une compétence physique : <span class=\"kw\">par la répétition</span>. Sans pratique régulière, ce que l’on a compris reste théorique, et les anciens réflexes reviennent dès que la tension monte. L’application vous offre cette pratique, chaque jour, pour découvrir ces réflexes ou ancrer ce que vous avez déjà travaillé.",
+    dansQuelCas: "Vos journées comptent des échanges à fort enjeu : un feedback à donner, une décision à défendre, une négociation à mener. Vous voulez vous entraîner chaque jour en autonomie, ou préparer une conversation précise.",
     visuel: { type: "telephone" },
     bouton: { label: "Découvrir mon réflexe face aux conversations difficiles", link: "diagnostic", note: "10 questions, diagnostic gratuit." },
     mention: "Lancement prévu début janvier 2027",
