@@ -147,7 +147,7 @@ p { margin: 0 0 1em; }
 .lead.kw { font-size: 20px; font-family: var(--titre); margin-bottom: 0; }
 .hero__visual { order: 1; position: relative; margin: 0; width: 100%; max-width: 560px; justify-self: center; padding: 18px 18px 0 0; }
 .hero__c1 { width: 46%; aspect-ratio: 1; right: 0; top: 0; }
-.hero__photo { position: relative; border-radius: var(--r-band); overflow: hidden; aspect-ratio: 262 / 270; }
+.hero__photo { position: relative; border-radius: var(--r-band); overflow: hidden; aspect-ratio: 776 / 800; }
 .hero__photo { background: #E6D3CB; }
 .hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
 @media (max-width: 899px) { .hero__visual { max-width: 340px; } }
