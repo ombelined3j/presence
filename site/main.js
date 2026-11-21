@@ -121,4 +121,17 @@
       frame.appendChild(iframe);
     });
   });
+
+  // Page d'atterrissage de l'app : aucun lien en dehors du diagnostic et de « Me connecter ».
+  // Filet de sécurité pour tout lien venant du contenu de la page.
+  if (C.SUR_APP) {
+    document.querySelectorAll("a").forEach(function (a) {
+      var k = a.getAttribute("data-link");
+      if (k === "diagnostic" || k === "connexion" || a.classList.contains("skip")) return;
+      var span = document.createElement("span");
+      span.className = a.className;
+      span.innerHTML = a.innerHTML;
+      a.replaceWith(span);
+    });
+  }
 })();

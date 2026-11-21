@@ -1,6 +1,8 @@
 // Gabarit unique des pages d'offres. Le contenu vient de window.PA_OFFRE
 // (un fichier par page dans data/offres/). Une partie sans contenu n'est pas affichée.
 (function () {
+  // Vrai quand la page est vue depuis l'adresse de l'app (page d'atterrissage sans autres liens).
+  var SUR_APP = Boolean(window.PA_CONFIG && window.PA_CONFIG.SUR_APP);
   var O = window.PA_OFFRE;
   var main = document.getElementById("contenu");
   if (!O || !main) return;
@@ -64,10 +66,12 @@
       inner += b.groupes.map(function (g) {
         return (g.titre ? '<p class="band__label o-cartes__label">' + esc(g.titre) + "</p>" : "") + '<div class="o-cartes">' +
           g.items.map(function (c) {
-            var tag = c.page ? "a" : "div";
-            return "<" + tag + ' class="o-carte' + (c.page ? " o-carte--lien" : "") + '"' + (c.page ? ' data-page="' + c.page + '" href="/"' : "") + ">" +
+            // Sur la page d'atterrissage de l'app, les cartes restent sans lien.
+            var lienCarte = c.page && !SUR_APP;
+            var tag = lienCarte ? "a" : "div";
+            return "<" + tag + ' class="o-carte' + (c.page ? " o-carte--lien" : "") + '"' + (lienCarte ? ' data-page="' + c.page + '" href="/"' : "") + ">" +
               '<span class="o-carte__t">' + esc(c.titre) + "</span><span>" + esc(c.texte) + "</span>" +
-              (c.page ? '<span class="o-carte__pastille" aria-hidden="true">' + ARROW + "</span>" : "") + "</" + tag + ">";
+              (lienCarte ? '<span class="o-carte__pastille" aria-hidden="true">' + ARROW + "</span>" : "") + "</" + tag + ">";
           }).join("") + "</div>";
       }).join("");
     }
@@ -121,9 +125,9 @@
   // 2.2 Preuve d'autorité
   var A = O.autorite || {};
   html += '<section class="o-autorite" aria-label="Agnès Candiotti"><div class="wrap">' +
-    '<a class="o-agnes" href="' + ((window.PA_CONFIG && window.PA_CONFIG.SITE_URL) || "") + '/#agnes"><img src="/assets/agnes.webp" alt="Portrait d’Agnès Candiotti" width="96" height="96" loading="lazy" />' +
+    (SUR_APP ? '<div class="o-agnes">' : '<a class="o-agnes" href="' + ((window.PA_CONFIG && window.PA_CONFIG.SITE_URL) || "") + '/#agnes">') + '<img src="/assets/agnes.webp" alt="Portrait d’Agnès Candiotti" width="96" height="96" loading="lazy" />' +
     '<span><span class="o-agnes__nom">Agnès Candiotti</span><span>coach professionnelle certifiée</span>' +
-    (A.extra ? '<span class="kw">' + esc(A.extra) + "</span>" : "") + "</span></a>" +
+    (A.extra ? '<span class="kw">' + esc(A.extra) + "</span>" : "") + "</span>" + (SUR_APP ? "</div>" : "</a>") +
     ((A.elements || []).length ? '<ul class="o-preuves">' + A.elements.map(function (e) { return "<li>" + esc(e) + "</li>"; }).join("") + "</ul>" : "") +
     "</div>" +
     '<div class="logos o-logos">' + (A.titreLogos ? '<p class="logos__titre">' + esc(A.titreLogos) + "</p>" : "") +

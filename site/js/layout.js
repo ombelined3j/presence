@@ -30,8 +30,8 @@
     '<header class="header header--landing"><div class="header__inner wrap">' +
     '<span class="brand">Présence Authentique</span>' +
     '<div class="header__actions">' +
-    '<a class="btn btn--small btn--outline" data-link="connexion" href="#">Me connecter</a>' +
     '<a class="btn btn--small header__cta" data-link="diagnostic" href="#">Découvrir mon réflexe face aux conversations difficiles ' + ARROW + "</a>" +
+    '<a class="btn btn--small btn--outline" data-link="connexion" href="#">Me connecter</a>' +
     "</div></div></header>";
 
   var headerSite =
@@ -51,10 +51,12 @@
   var footer =
     '<footer class="footer"><div class="wrap footer__grid">' +
     '<div><p class="footer__brand">Présence Authentique</p>' +
-    '<a class="btn" data-link="newsletter" href="#" target="_blank" rel="noopener">S\'inscrire à la liste de diffusion ' + ARROW + "</a></div>" +
+    (connexion ? "" : '<a class="btn" data-link="newsletter" href="#" target="_blank" rel="noopener">S\'inscrire à la liste de diffusion ' + ARROW + "</a>") + "</div>" +
     '<div><p class="footer__label">Localisation</p><p>75019 Paris<br />05000 Gap</p>' +
     '<p class="footer__label">Contact</p>' +
-    '<p><a href="mailto:agnes@presenceauthentique.com?subject=Contact">agnes@presenceauthentique.com</a><br /><a href="tel:+33688599079">06 88 59 90 79</a></p></div>' +
+    (connexion
+      ? "<p>agnes@presenceauthentique.com<br />06 88 59 90 79</p></div>"
+      : '<p><a href="mailto:agnes@presenceauthentique.com?subject=Contact">agnes@presenceauthentique.com</a><br /><a href="tel:+33688599079">06 88 59 90 79</a></p></div>') +
     (connexion ? "" :
       '<nav aria-label="Navigation du pied de page"><ul class="footer__nav">' +
       ONGLETS.map(function (o) { return "<li>" + lien(o) + "</li>"; }).join("") +
