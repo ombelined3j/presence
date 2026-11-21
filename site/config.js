@@ -1,8 +1,8 @@
 // Configuration du site Présence Authentique.
-// Avant la mise en ligne : remplacer APP_URL par l'URL de production de l'app.
+// URL de production de l'app (projet Vercel presence-authentique-app). En local : "http://localhost:5173".
 // Les liens localhost ne fonctionnent que sur l'ordinateur où tourne l'app.
 window.PA_CONFIG = {
-  APP_URL: "http://localhost:5173",
+  APP_URL: "https://presence-authentique-app.vercel.app",
 
   // Pages des offres.
   PAGES: {
