@@ -329,7 +329,8 @@ body { padding-bottom: 76px; }
 .o-lead { font-family: var(--titre); font-size: 22px; line-height: 1.35; }
 .o-texte { max-width: 34em; }
 .o-encart { padding: 14px 18px; border-radius: 18px; background: var(--surface); font-size: 16px; max-width: 36em; }
-.o-mention { font-size: 15px; margin-top: 16px; }
+.o-mention { font-size: 15px; margin-top: 28px; }
+.o-mention + .cta { margin-top: 12px; }
 .o-visuel { position: relative; margin: 0; width: 100%; max-width: 520px; justify-self: center; padding: 20px 20px 0 0; }
 .o-visuel__c, .o-visuel__c1 { width: 46%; aspect-ratio: 1; right: 0; top: 0; }
 .o-visuel__c2 { width: 26%; aspect-ratio: 1; left: 0; bottom: 0; }

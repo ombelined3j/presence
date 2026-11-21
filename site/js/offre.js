@@ -108,8 +108,9 @@
     (p.texte || []).map(function (t) { return '<p class="' + (t.lead ? "o-lead" : "o-texte") + '">' + t.html + "</p>"; }).join("") +
     (p.pourQui ? '<p class="o-encart"><span class="band__label">Pour qui</span> ' + p.pourQui + "</p>" : "") +
     (p.dansQuelCas ? '<p class="o-encart"><span class="band__label">Dans quel cas ?</span> ' + esc(p.dansQuelCas) + "</p>" : "") +
-    (p.bouton ? '<div class="cta">' + bouton(p.bouton) + "</div>" : "") +
+    // La mention (ex. date de lancement) s'affiche juste au-dessus du bouton.
     (p.mention ? '<p class="o-mention">' + esc(p.mention) + "</p>" : "") +
+    (p.bouton ? '<div class="cta">' + bouton(p.bouton) + "</div>" : "") +
     "</div>" + visuel + "</div></section>";
 
   // Galerie (photos sous la présentation)

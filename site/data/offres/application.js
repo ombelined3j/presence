@@ -6,12 +6,12 @@ window.PA_OFFRE = {
   cle: "application",
   presentation: {
     surtitre: "Application d'entraînement pour managers et leaders",
-    titre: "Une séance de 5 minutes chaque matin, sur votre téléphone.",
+    titre: "Une séance de 5 minutes par jour, sur votre téléphone.",
     texte: [
       { html: "Votre entraînement personnalisé, en 5 minutes par jour, pour exprimer facilement ce qui semblait difficile dans vos échanges professionnels et moins ressasser après coup." },
     ],
     pourQui: "Les managers et leaders qui ont besoin de pratiquer les conversations difficiles dans leur vie professionnelle : pour mieux négocier, mieux vivre leurs relations professionnelles au quotidien et gagner en performance. <span class=\"kw\">Ils ont déjà suivi une formation, du coaching ou une thérapie, et veulent ancrer dans leur quotidien ce qu’ils y ont appris.</span>",
-    dansQuelCas: "Vous voulez pratiquer en autonomie, 5 minutes chaque matin, ou préparer une situation professionnelle précise.",
+    dansQuelCas: "Vous voulez pratiquer en autonomie, 5 minutes par jour, ou préparer une situation professionnelle précise.",
     visuel: { type: "telephone" },
     bouton: { label: "Découvrir mon réflexe face aux conversations difficiles", link: "diagnostic", note: "10 questions, diagnostic gratuit." },
     mention: "Lancement prévu début janvier 2027",
@@ -44,7 +44,7 @@ window.PA_OFFRE = {
       titre: "Dans l’app : la séance du jour, et la préparation en plus",
       groupes: [
         { items: [
-          { titre: "Chaque matin : la séance du jour", texte: "5 minutes d’ancrage avant la journée, pour rester calme et stable quand une conversation se tend." },
+          { titre: "Chaque jour : la séance du jour", texte: "5 minutes d’ancrage, au moment que vous choisissez, pour rester calme et stable quand une conversation se tend." },
           { titre: "Et en plus, quand vous en avez besoin", texte: "Une conversation difficile approche au travail ? Préparez-la en quelques minutes, en plus de votre séance du jour." },
         ] },
       ],
