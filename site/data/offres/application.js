@@ -10,7 +10,7 @@ window.PA_OFFRE = {
     texte: [
       { html: "Votre entraînement personnalisé, en 5 minutes par jour, pour exprimer facilement ce qui semblait difficile dans vos échanges professionnels et moins ressasser après coup." },
     ],
-    pourQui: "Les managers et leaders qui ont besoin de pratiquer les conversations difficiles dans leur vie professionnelle : pour mieux négocier, mieux vivre leurs relations professionnelles au quotidien et gagner en performance. <span class=\"kw\">Ils ont déjà suivi une formation, du coaching ou une thérapie, et veulent ancrer dans leur quotidien ce qu’ils y ont appris.</span>",
+    pourQui: "Les managers et leaders qui souhaitent <span class=\"kw\">ancrer ce qu’ils ont appris en formation ou en coaching ponctuel</span> et souhaitent pratiquer les conversations difficiles dans leur vie professionnelle : mieux négocier, mieux convaincre, mieux vivre leurs relations professionnelles au quotidien et gagner en performance.",
     dansQuelCas: "Vous voulez pratiquer en autonomie, 5 minutes par jour, ou préparer une situation professionnelle précise.",
     visuel: { type: "telephone" },
     bouton: { label: "Découvrir mon réflexe face aux conversations difficiles", link: "diagnostic", note: "10 questions, diagnostic gratuit." },
