@@ -1,15 +1,23 @@
 // Configuration du site Présence Authentique.
 // URL de production de l'app (projet Vercel presence-authentique-app). En local : "http://localhost:5173".
 // Les liens localhost ne fonctionnent que sur l'ordinateur où tourne l'app.
-window.PA_CONFIG = {
-  APP_URL: "https://presence-authentique-app.vercel.app",
+// La page Application est aussi affichée à l'adresse de l'app (réécriture Vercel du projet app) :
+// les liens vers le site sont donc absolus quand la page est vue depuis l'app.
+var PA_APP_URL = "https://presence-authentique-app.vercel.app";
+var PA_SITE_URL = location.origin === PA_APP_URL ? "https://presence-authentique-site.vercel.app" : "";
 
-  // Pages des offres.
+window.PA_CONFIG = {
+  APP_URL: PA_APP_URL,
+  SITE_URL: PA_SITE_URL,
+  // Vrai quand la page est affichée à l'adresse de l'app (seul cas où « Se connecter » apparaît).
+  SUR_APP: location.origin === PA_APP_URL,
+
+  // Pages des offres. La page Application vit à l'adresse de l'app.
   PAGES: {
-    application: "/application/",
-    dojo: "/dojo/",
-    coaching: "/sos-conversation-difficile/",
-    immersions: "/immersions/",
+    application: PA_APP_URL + "/",
+    dojo: PA_SITE_URL + "/dojo/",
+    coaching: PA_SITE_URL + "/sos-conversation-difficile/",
+    immersions: PA_SITE_URL + "/immersions/",
   },
 
   NEWSLETTER_URL:

@@ -3,6 +3,10 @@
 (function () {
   var ARROW = '<svg class="arrow" aria-hidden="true" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>';
   var actif = document.body.getAttribute("data-page-actif") || "";
+  var C = window.PA_CONFIG || {};
+  var accueil = (C.SITE_URL || "") + "/";
+  // « Se connecter » n'apparaît que sur la page vue depuis l'adresse de l'app.
+  var connexion = C.SUR_APP;
 
   // Ordre du menu : Application, Dojo, SOS conversation difficile, Immersions, Newsletter.
   var ONGLETS = [
@@ -22,13 +26,13 @@
   var header =
     '<a class="skip" href="#contenu">Aller au contenu</a>' +
     '<header class="header"><div class="header__inner wrap">' +
-    '<a class="brand" href="/">Présence Authentique</a>' +
+    '<a class="brand" href="' + accueil + '">Présence Authentique</a>' +
     '<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">' +
     '<span class="menu-toggle__bars" aria-hidden="true"></span><span class="visually-hidden">Ouvrir le menu</span></button>' +
     '<nav class="nav" id="menu" aria-label="Navigation principale"><ul class="nav__list">' +
     ONGLETS.map(function (o) { return "<li>" + lien(o) + "</li>"; }).join("") +
     "</ul>" +
-    '<a class="nav__login" data-link="connexion" href="#">Se connecter</a>' +
+    (connexion ? '<a class="nav__login" data-link="connexion" href="#">Se connecter</a>' : "") +
     '<a class="btn btn--small" data-link="diagnostic" href="#">Diagnostic gratuit ' + ARROW + "</a>" +
     "</nav></div></header>";
 
@@ -42,7 +46,7 @@
     '<nav aria-label="Navigation du pied de page"><ul class="footer__nav">' +
     ONGLETS.map(function (o) { return "<li>" + lien(o) + "</li>"; }).join("") +
     '<li><a data-link="diagnostic" href="#">Diagnostic gratuit</a></li>' +
-    '<li><a data-link="connexion" href="#">Se connecter</a></li>' +
+    (connexion ? '<li><a data-link="connexion" href="#">Se connecter</a></li>' : "") +
     "</ul></nav>" +
     "</div></footer>" +
     '<div class="mobile-bar"><a class="btn btn--block" data-link="diagnostic" href="#">Découvrir mon réflexe face aux conversations difficiles ' + ARROW + "</a></div>";

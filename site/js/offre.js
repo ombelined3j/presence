@@ -121,7 +121,7 @@
   // 2.2 Preuve d'autorité
   var A = O.autorite || {};
   html += '<section class="o-autorite" aria-label="Agnès Candiotti"><div class="wrap">' +
-    '<a class="o-agnes" href="/#agnes"><img src="/assets/agnes.webp" alt="Portrait d’Agnès Candiotti" width="96" height="96" loading="lazy" />' +
+    '<a class="o-agnes" href="' + ((window.PA_CONFIG && window.PA_CONFIG.SITE_URL) || "") + '/#agnes"><img src="/assets/agnes.webp" alt="Portrait d’Agnès Candiotti" width="96" height="96" loading="lazy" />' +
     '<span><span class="o-agnes__nom">Agnès Candiotti</span><span>coach professionnelle certifiée</span>' +
     (A.extra ? '<span class="kw">' + esc(A.extra) + "</span>" : "") + "</span></a>" +
     ((A.elements || []).length ? '<ul class="o-preuves">' + A.elements.map(function (e) { return "<li>" + esc(e) + "</li>"; }).join("") + "</ul>" : "") +
