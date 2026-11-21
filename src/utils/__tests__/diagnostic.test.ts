@@ -1,38 +1,39 @@
 import { describe, expect, it } from 'vitest';
-import { LOCAL_DIAGNOSTIC_QUESTIONS } from '../../data/diagnostic';
+import { DIAGNOSTIC_QUESTIONS } from '../../data/diagnostic';
 import { REFLEX_TYPES } from '../../types';
 import { computeDiagnostic } from '../diagnostic';
 import { dayIndex, localDateISO } from '../dates';
 
-const pick = (reflexes: string[]) =>
-  Object.fromEntries(
-    LOCAL_DIAGNOSTIC_QUESTIONS.map((q, i) => [q.id, q.answers.find((a) => a.reflex_type === reflexes[i])!.id]),
-  );
+// Réponses par score (−2 à +2), dans l’ordre des 10 affirmations.
+const repondre = (scores: number[]) =>
+  Object.fromEntries(DIAGNOSTIC_QUESTIONS.map((q, i) => [q.id, q.answers.find((a) => a.score === scores[i])!.id]));
 
 describe('computeDiagnostic', () => {
-  it('chaque question propose les cinq réflexes', () => {
-    for (const q of LOCAL_DIAGNOSTIC_QUESTIONS) {
-      expect(new Set(q.answers.map((a) => a.reflex_type))).toEqual(new Set(REFLEX_TYPES));
+  it('chaque réflexe est évalué par 2 affirmations, avec une échelle de −2 à +2', () => {
+    expect(DIAGNOSTIC_QUESTIONS).toHaveLength(10);
+    for (const r of REFLEX_TYPES) {
+      expect(DIAGNOSTIC_QUESTIONS.filter((q) => q.answers[0].reflex_type === r)).toHaveLength(2);
     }
+    for (const q of DIAGNOSTIC_QUESTIONS) expect(q.answers.map((a) => a.score)).toEqual([-2, -1, 0, 1, 2]);
   });
 
-  it('identifie le réflexe dominant et secondaire', () => {
-    const r = computeDiagnostic(LOCAL_DIAGNOSTIC_QUESTIONS, pick(['defense', 'defense', 'defense', 'withdrawal', 'withdrawal']));
-    expect(r.dominant).toBe('defense');
-    expect(r.secondary).toBe('withdrawal');
-    expect(r.scores.defense).toBe(3);
-    expect(r.answers).toHaveLength(5);
+  it('reproduit l’exemple de la page Notion', () => {
+    const r = computeDiagnostic(DIAGNOSTIC_QUESTIONS, repondre([1, -1, -2, 2, 1, 1, -1, 1, -1, 2]));
+    expect(r.scores).toEqual({ withdraw: 2, endure: 1, overadapt: 1, impose: 0, conform: -1 });
+    expect(r.principal).toEqual(['withdraw']);
+    expect(r.secondaires).toEqual(['endure', 'overadapt']);
   });
 
-  it('départage une égalité par l’ordre d’apparition', () => {
-    const r = computeDiagnostic(LOCAL_DIAGNOSTIC_QUESTIONS, pick(['control', 'avoidance', 'avoidance', 'control', 'withdrawal']));
-    expect(r.dominant).toBe('control');
-    expect(r.secondary).toBe('avoidance');
+  it('plusieurs réflexes premiers ex æquo sont tous principaux, sans secondaire', () => {
+    const r = computeDiagnostic(DIAGNOSTIC_QUESTIONS, repondre([2, 0, 0, 2, 0, 2, 0, 0, 2, 0]));
+    expect(r.principal).toEqual(['withdraw', 'endure']);
+    expect(r.secondaires).toEqual([]);
   });
 
-  it('pas de secondaire si un seul réflexe est choisi', () => {
-    const r = computeDiagnostic(LOCAL_DIAGNOSTIC_QUESTIONS, pick(['avoidance', 'avoidance', 'avoidance', 'avoidance', 'avoidance']));
-    expect(r.secondary).toBeNull();
+  it('des réponses toutes identiques placent les 5 réflexes au même rang', () => {
+    const r = computeDiagnostic(DIAGNOSTIC_QUESTIONS, repondre(Array(10).fill(0)));
+    expect(r.principal).toEqual(REFLEX_TYPES);
+    expect(r.secondaires).toEqual([]);
   });
 });
 

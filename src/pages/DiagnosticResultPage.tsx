@@ -3,20 +3,17 @@ import DiagnosticResult from '../components/DiagnosticResult';
 import { ArrowUpRight } from '../components/Icons';
 import { Wordmark } from '../components/ui';
 import { useAuth } from '../contexts/AuthContext';
-import { REFLEX_PROFILES } from '../data/reflexes';
-import { AUDIO_SEED } from '../data/audios';
+import type { EnvoiResultat } from '../services/diagnostic';
 import type { DiagnosticComputed } from '../types';
 import { readPendingDiagnostic } from '../utils/pendingDiagnostic';
 
 export default function DiagnosticResultPage() {
   const { user } = useAuth();
   const location = useLocation();
-  const state = location.state as { result?: DiagnosticComputed; saved?: boolean } | null;
+  const state = location.state as { result?: DiagnosticComputed; email?: string; envoi?: EnvoiResultat } | null;
   const result = state?.result ?? readPendingDiagnostic();
-  if (!result) return <Navigate to="/diagnostic" replace />;
-
-  const profile = REFLEX_PROFILES[result.dominant];
-  const audio = AUDIO_SEED.find((a) => a.key === profile.firstExercise.audioKey);
+  // Un ancien résultat (format précédent) ne peut pas s’afficher : on refait le diagnostic.
+  if (!result || !Array.isArray(result.principal)) return <Navigate to="/diagnostic" replace />;
 
   return (
     <div className="flex flex-col gap-8">
@@ -27,20 +24,19 @@ export default function DiagnosticResultPage() {
           Voici vos <span className="text-vert">réflexes</span> du moment.
         </h1>
         <p className="mt-3 text-corps text-encre/75">Un point de départ, pas une étiquette. Vos réflexes évoluent avec la pratique.</p>
-      </header>
-
-      <DiagnosticResult dominant={result.dominant} secondary={result.secondary} scores={result.scores} />
-
-      <section className="rounded-carte bg-lilas p-6">
-        <p className="text-mini text-encre/70">Votre premier exercice</p>
-        <h2 className="mt-1 font-titre text-carte">{profile.firstExercise.title}</h2>
-        <p className="mt-2 text-corps">{profile.firstExercise.text}</p>
-        {audio && (
-          <p className="mt-3 text-mini text-encre/75">
-            Et pour votre première séance d’ancrage : « {audio.title} ».
+        {state?.email && state.envoi === 'envoye' && (
+          <p className="mt-4 rounded-carte bg-surface p-4 text-mini text-encre/80">
+            Votre résultat vient de vous être envoyé à <span className="text-vert">{state.email}</span>.
           </p>
         )}
-      </section>
+        {state?.email && state.envoi === 'echec' && (
+          <p className="mt-4 rounded-carte bg-surface p-4 text-mini text-encre/80">
+            L’e-mail n’a pas pu être envoyé pour le moment. Votre résultat reste affiché ici.
+          </p>
+        )}
+      </header>
+
+      <DiagnosticResult principal={result.principal} secondaires={result.secondaires} />
 
       {user ? (
         <div className="flex flex-col gap-3">

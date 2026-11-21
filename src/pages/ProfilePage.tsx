@@ -93,7 +93,11 @@ export default function ProfilePage() {
             {latest ? (
               <>
                 <p className="text-mini text-encre/55">Dernier passage le {formatShortDate(latest.completed_at)}</p>
-                <DiagnosticResult dominant={latest.dominant_reflex} secondary={latest.secondary_reflex} scores={latest.result_data.scores} compact />
+                <DiagnosticResult
+                  principal={latest.result_data.principal ?? [latest.dominant_reflex]}
+                  secondaires={latest.result_data.secondaires ?? (latest.secondary_reflex ? [latest.secondary_reflex] : [])}
+                  compact
+                />
               </>
             ) : (
               <EmptyState title="Pas encore de diagnostic">
@@ -108,8 +112,8 @@ export default function ProfilePage() {
                     <li key={d.id} className="flex justify-between gap-3 text-mini">
                       <span>{formatShortDate(d.completed_at)}</span>
                       <span className="text-encre/75">
-                        {REFLEX_PROFILES[d.dominant_reflex].label}
-                        {d.secondary_reflex ? ` puis ${REFLEX_PROFILES[d.secondary_reflex].label.toLowerCase()}` : ''}
+                        {REFLEX_PROFILES[d.dominant_reflex]?.label}
+                        {d.secondary_reflex && REFLEX_PROFILES[d.secondary_reflex] ? `, puis ${REFLEX_PROFILES[d.secondary_reflex].label}` : ''}
                       </span>
                     </li>
                   ))}

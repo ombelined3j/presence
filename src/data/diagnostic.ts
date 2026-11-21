@@ -1,77 +1,41 @@
 import type { DiagnosticQuestion, ReflexType } from '../types';
 
-// Source unique du contenu du diagnostic.
-// - Sert de seed pour la base (scripts/generate-seed.mjs).
-// - Sert de secours si Supabase n'est pas configuré ou ne renvoie rien.
+// Questionnaire initial, repris mot pour mot de la page Notion « Contenu de l’app ».
+// Pour chaque affirmation, la personne se place sur une échelle de 5 positions.
+// Chaque réflexe est évalué par 2 affirmations : son score va de −4 à +4.
 
-interface SeedQuestion {
-  question: string;
-  answers: { label: string; reflex: ReflexType }[];
-}
-
-export const DIAGNOSTIC_SEED: SeedQuestion[] = [
-  {
-    question: 'Une conversation délicate se profile : un désaccord, une demande à faire. Le plus souvent, vous…',
-    answers: [
-      { label: 'La repoussez, en espérant qu’elle ne soit bientôt plus nécessaire.', reflex: 'avoidance' },
-      { label: 'Pensez surtout à ce que l’autre attend, pour ne pas le contrarier.', reflex: 'accommodation' },
-      { label: 'Préparez vos arguments pour ne pas vous laisser faire.', reflex: 'defense' },
-      { label: 'Planifiez précisément le déroulé, pour que rien ne vous échappe.', reflex: 'control' },
-      { label: 'Sentez déjà une boule au ventre et redoutez de rester sans voix.', reflex: 'withdrawal' },
-    ],
-  },
-  {
-    question: 'On vous adresse une critique que vous trouvez injuste. Votre premier réflexe :',
-    answers: [
-      { label: 'Me justifier tout de suite, point par point.', reflex: 'defense' },
-      { label: 'M’excuser, même si je ne suis pas d’accord.', reflex: 'accommodation' },
-      { label: 'Changer de sujet ou minimiser pour passer à autre chose.', reflex: 'avoidance' },
-      { label: 'Recadrer la discussion pour reprendre la main.', reflex: 'control' },
-      { label: 'Me taire et me fermer, quitte à y repenser pendant des heures.', reflex: 'withdrawal' },
-    ],
-  },
-  {
-    question: 'Au milieu d’un échange qui se tend, ce qui vous arrive le plus souvent :',
-    answers: [
-      { label: 'Je perds mes mots, j’ai la tête vide.', reflex: 'withdrawal' },
-      { label: 'Le ton monte, je réponds du tac au tac.', reflex: 'defense' },
-      { label: 'Je coupe la parole pour orienter la conversation.', reflex: 'control' },
-      { label: 'Je cède pour que la tension retombe.', reflex: 'accommodation' },
-      { label: 'Je trouve une raison d’écourter la conversation.', reflex: 'avoidance' },
-    ],
-  },
-  {
-    question: 'Après une conversation difficile, vous vous dites souvent :',
-    answers: [
-      { label: '« J’aurais dû dire ce dont j’avais vraiment besoin. »', reflex: 'accommodation' },
-      { label: '« J’ai réagi trop vite, trop fort. »', reflex: 'defense' },
-      { label: '« Je n’ai presque rien dit de ce que je pensais. »', reflex: 'withdrawal' },
-      { label: '« Je n’ai pas vraiment écouté ce que l’autre voulait dire. »', reflex: 'control' },
-      { label: '« Finalement, on n’a pas parlé du vrai sujet. »', reflex: 'avoidance' },
-    ],
-  },
-  {
-    question: 'Dans une conversation importante, ce qui vous rassure le plus :',
-    answers: [
-      { label: 'Savoir exactement où l’on va, et comment.', reflex: 'control' },
-      { label: 'Sentir que l’autre est satisfait.', reflex: 'accommodation' },
-      { label: 'Que cela ne dure pas trop longtemps.', reflex: 'avoidance' },
-      { label: 'Avoir de bons arguments en réserve.', reflex: 'defense' },
-      { label: 'Pouvoir prendre du recul et y revenir plus tard.', reflex: 'withdrawal' },
-    ],
-  },
+export const ECHELLE: { label: string; score: number }[] = [
+  { label: 'Pas du tout d’accord', score: -2 },
+  { label: 'Plutôt pas d’accord', score: -1 },
+  { label: 'Pas d’avis', score: 0 },
+  { label: 'Plutôt d’accord', score: 1 },
+  { label: 'Totalement d’accord', score: 2 },
 ];
 
-// Version "prête à l'emploi" avec des identifiants locaux, utilisée en secours.
-export const LOCAL_DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = DIAGNOSTIC_SEED.map((q, qi) => ({
-  id: `local-q${qi + 1}`,
-  question: q.question,
+export const AFFIRMATIONS: { texte: string; reflex: ReflexType }[] = [
+  { texte: 'Quand une conversation me met mal à l’aise, je trouve une raison de partir ou de raccrocher.', reflex: 'withdraw' },
+  { texte: 'Quand j’ai peur que dire non déçoive quelqu’un, je lui dis oui sans me demander si ça me convient.', reflex: 'overadapt' },
+  { texte: 'Quand un échange se tend, je cherche la règle à suivre, ou ce qu’on est censé faire dans cette situation.', reflex: 'conform' },
+  { texte: 'Quand une remarque me dérange, je garde pour moi ce que j’aimerais dire et j’attends que ça passe.', reflex: 'endure' },
+  { texte: 'Quand quelqu’un remet ma décision en question, je lui coupe la parole pour faire passer mon point de vue.', reflex: 'impose' },
+  { texte: 'Quand un sujet me met mal à l’aise, je dévie la conversation vers un autre sujet.', reflex: 'withdraw' },
+  { texte: 'Quand l’autre n’est pas d’accord avec moi, j’insiste pour qu’il finisse par céder.', reflex: 'impose' },
+  { texte: 'Quand j’ai peur de mal répondre, je cherche les mots parfaits.', reflex: 'conform' },
+  { texte: 'Quand le groupe s’apprête à prendre une décision qui ne me convient pas, je garde mon désaccord pour moi.', reflex: 'endure' },
+  { texte: 'Quand l’autre est contrarié, je vais dans son sens pour calmer la situation, même si ça ne m’arrange pas.', reflex: 'overadapt' },
+];
+
+// Le questionnaire vit dans le code (une seule source) : chaque affirmation devient une
+// question dont les 5 réponses portent le même réflexe et un score de −2 à +2.
+export const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = AFFIRMATIONS.map((a, qi) => ({
+  id: `q${qi + 1}`,
+  question: a.texte,
   position: qi + 1,
-  answers: q.answers.map((a, ai) => ({
-    id: `local-q${qi + 1}-a${ai + 1}`,
-    question_id: `local-q${qi + 1}`,
-    answer_label: a.label,
+  answers: ECHELLE.map((e, ai) => ({
+    id: `q${qi + 1}-a${ai + 1}`,
+    question_id: `q${qi + 1}`,
+    answer_label: e.label,
     reflex_type: a.reflex,
-    score: 1,
+    score: e.score,
   })),
 }));

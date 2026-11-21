@@ -2,7 +2,6 @@
 // Usage : node --experimental-strip-types scripts/generate-seed.mjs
 import { writeFileSync } from 'node:fs';
 import { AUDIO_SEED } from '../src/data/audios.ts';
-import { DIAGNOSTIC_SEED } from '../src/data/diagnostic.ts';
 import { DOJO_SEED } from '../src/data/dojo.ts';
 
 const q = (s) => `'${String(s).replace(/'/g, "''")}'`;
@@ -15,18 +14,7 @@ const lines = [
   '',
 ];
 
-DIAGNOSTIC_SEED.forEach((question, i) => {
-  lines.push(
-    'with q as (',
-    `  insert into public.diagnostic_questions (question, position, is_active) values (${q(question.question)}, ${i + 1}, true) returning id`,
-    ')',
-    'insert into public.diagnostic_answers (question_id, answer_label, reflex_type, score)',
-    'select q.id, v.label, v.reflex, 1 from q, (values',
-    question.answers.map((a) => `  (${q(a.label)}, ${q(a.reflex)})`).join(',\n'),
-    ') as v(label, reflex);',
-    '',
-  );
-});
+// Le diagnostic n'est plus en base : il est défini dans src/data/diagnostic.ts.
 
 lines.push(
   'insert into public.exercises (title, description, category, content, estimated_duration, difficulty_level, is_active) values',

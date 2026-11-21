@@ -1,6 +1,7 @@
-export type ReflexType = 'avoidance' | 'accommodation' | 'defense' | 'control' | 'withdrawal';
+// Les 5 réflexes relationnels (contenu Notion « Contenu de l’app », questionnaire initial).
+export type ReflexType = 'withdraw' | 'endure' | 'overadapt' | 'impose' | 'conform';
 
-export const REFLEX_TYPES: ReflexType[] = ['avoidance', 'accommodation', 'defense', 'control', 'withdrawal'];
+export const REFLEX_TYPES: ReflexType[] = ['withdraw', 'endure', 'overadapt', 'impose', 'conform'];
 
 export interface DiagnosticAnswer {
   id: string;
@@ -21,15 +22,24 @@ export type ReflexScores = Record<ReflexType, number>;
 
 export interface DiagnosticComputed {
   scores: ReflexScores;
+  // Réflexe(s) principal(aux) : score le plus élevé. Plusieurs en cas d’égalité.
+  principal: ReflexType[];
+  // Réflexe(s) secondaire(s) : deuxième score. Vide si plusieurs réflexes partagent la première place.
+  secondaires: ReflexType[];
   dominant: ReflexType;
   secondary: ReflexType | null;
-  answers: { question_id: string; answer_id: string; reflex_type: ReflexType }[];
+  answers: { question_id: string; answer_id: string; reflex_type: ReflexType; score: number }[];
 }
 
 export interface DiagnosticResultRow {
   id: string;
   user_id: string;
-  result_data: { scores: ReflexScores; answers?: DiagnosticComputed['answers'] };
+  result_data: {
+    scores: ReflexScores;
+    principal?: ReflexType[];
+    secondaires?: ReflexType[];
+    answers?: DiagnosticComputed['answers'];
+  };
   dominant_reflex: ReflexType;
   secondary_reflex: ReflexType | null;
   completed_at: string;

@@ -1,67 +1,60 @@
 import { REFLEX_PROFILES } from '../data/reflexes';
-import { REFLEX_TYPES, type ReflexScores, type ReflexType } from '../types';
+import { REFLEX_TYPES, type ReflexType } from '../types';
 
 interface Props {
-  dominant: ReflexType;
-  secondary: ReflexType | null;
-  scores: ReflexScores;
+  principal: ReflexType[];
+  secondaires: ReflexType[];
   compact?: boolean;
 }
 
-export default function DiagnosticResult({ dominant, secondary, scores, compact = false }: Props) {
-  const main = REFLEX_PROFILES[dominant];
-  const second = secondary ? REFLEX_PROFILES[secondary] : null;
-  const total = Math.max(1, Object.values(scores).reduce((a, b) => a + b, 0));
-
+// Écran de résultat (page Notion « Contenu de l’app »), au vouvoiement.
+export default function DiagnosticResult({ principal, secondaires, compact = false }: Props) {
+  const plusieurs = principal.length > 1;
   return (
     <div className="flex flex-col gap-4">
       <section className="rounded-carte bg-vert p-6 text-white">
-        <p className="text-mini text-white/80">Votre réflexe principal</p>
-        <h2 className="mt-1 font-titre text-[28px] leading-tight">{main.label}</h2>
-        <p className="mt-1 text-corps text-white/90">{main.short}</p>
-        {!compact && <p className="mt-4 text-corps text-white/85">{main.description}</p>}
+        <p className="text-mini text-white/80">{plusieurs ? 'Vos réflexes principaux' : 'Votre réflexe principal'}</p>
+        {principal.map((r) => (
+          <div key={r} className="mt-3">
+            <h2 className="font-titre text-[28px] leading-tight">{REFLEX_PROFILES[r].label}</h2>
+            <p className="mt-1 text-corps text-white/90">{REFLEX_PROFILES[r].description}</p>
+          </div>
+        ))}
+        <p className="mt-4 text-mini text-white/80">
+          {plusieurs
+            ? 'Ce sont les réflexes dans lesquels vous vous reconnaissez le plus d’après vos réponses, à égalité.'
+            : 'C’est le réflexe dans lequel vous vous reconnaissez le plus d’après vos réponses.'}
+        </p>
       </section>
 
-      {second && (
+      {secondaires.length > 0 && (
         <section className="rounded-carte bg-lilas p-5">
-          <p className="text-mini text-encre/70">Réflexe secondaire</p>
-          <h3 className="mt-1 font-titre text-carte">{second.label}</h3>
-          <p className="mt-1 text-mini text-encre/80">{second.short}</p>
+          <p className="text-mini text-encre/70">{secondaires.length > 1 ? 'Vos réflexes secondaires' : 'Votre réflexe secondaire'}</p>
+          {secondaires.map((r) => (
+            <div key={r} className="mt-2">
+              <h3 className="font-titre text-carte">{REFLEX_PROFILES[r].label}</h3>
+              <p className="mt-1 text-corps text-encre/85">{REFLEX_PROFILES[r].description}</p>
+            </div>
+          ))}
+          <p className="mt-3 text-mini text-encre/70">
+            {secondaires.length > 1
+              ? 'Ce sont les réflexes qui ressortent ensuite de vos réponses, à égalité.'
+              : 'C’est le deuxième réflexe qui ressort de vos réponses.'}
+          </p>
         </section>
       )}
 
-      <section className="rounded-carte bg-surface p-5">
-        <p className="surtitre">Vos réflexes</p>
-        <ul className="mt-3 flex flex-col gap-2.5">
-          {REFLEX_TYPES.map((r) => (
-            <li key={r} className="flex items-center gap-3 text-mini">
-              <span className="w-24 shrink-0">{REFLEX_PROFILES[r].label}</span>
-              <span className="h-2 flex-1 overflow-hidden rounded-full bg-encre/10">
-                <span className="block h-full rounded-full bg-vert" style={{ width: `${(scores[r] / total) * 100}%` }} />
-              </span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       {!compact && (
-        <>
-          <section className="rounded-carte bg-sable p-5">
-            <p className="text-mini text-encre/70">Votre ressource</p>
-            <p className="mt-1 text-corps">{main.strength}</p>
-          </section>
-          <section className="rounded-carte bg-surface p-5">
-            <p className="surtitre">Vos axes de progression</p>
-            <ul className="mt-3 flex flex-col gap-2">
-              {main.axes.map((a) => (
-                <li key={a} className="flex gap-3 text-corps">
-                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-vert" aria-hidden />
-                  {a}
-                </li>
-              ))}
-            </ul>
-          </section>
-        </>
+        <section className="rounded-carte bg-surface p-5">
+          <p className="surtitre">Les 5 réflexes relationnels</p>
+          <ul className="mt-3 flex flex-col gap-3">
+            {REFLEX_TYPES.map((r) => (
+              <li key={r} className="text-corps">
+                <span className="text-vert">{REFLEX_PROFILES[r].label}</span> : {REFLEX_PROFILES[r].description}
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
       <p className="text-mini text-encre/55">
         Ces résultats sont des pistes de travail, pas un diagnostic psychologique ou médical.

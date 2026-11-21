@@ -1,19 +1,10 @@
-import { isSupabaseConfigured, supabase } from '../integrations/supabase/client';
-import { LOCAL_DIAGNOSTIC_QUESTIONS } from '../data/diagnostic';
+import { supabase } from '../integrations/supabase/client';
+import { DIAGNOSTIC_QUESTIONS } from '../data/diagnostic';
 import type { DiagnosticComputed, DiagnosticQuestion, DiagnosticResultRow } from '../types';
 
+// Le questionnaire est défini dans le code (src/data/diagnostic.ts).
 export async function fetchDiagnosticQuestions(): Promise<DiagnosticQuestion[]> {
-  if (!isSupabaseConfigured) return LOCAL_DIAGNOSTIC_QUESTIONS;
-  const { data, error } = await supabase
-    .from('diagnostic_questions')
-    .select('id, question, position, answers:diagnostic_answers(id, question_id, answer_label, reflex_type, score)')
-    .eq('is_active', true)
-    .order('position');
-  if (error) throw error;
-  const questions = (data ?? []) as DiagnosticQuestion[];
-  // Base vide (seed non appliqué) : on garde un diagnostic utilisable.
-  if (questions.length === 0) return LOCAL_DIAGNOSTIC_QUESTIONS;
-  return questions;
+  return DIAGNOSTIC_QUESTIONS;
 }
 
 export async function saveDiagnosticResult(userId: string, result: DiagnosticComputed): Promise<DiagnosticResultRow> {
@@ -21,7 +12,7 @@ export async function saveDiagnosticResult(userId: string, result: DiagnosticCom
     .from('diagnostic_results')
     .insert({
       user_id: userId,
-      result_data: { scores: result.scores, answers: result.answers },
+      result_data: { scores: result.scores, principal: result.principal, secondaires: result.secondaires, answers: result.answers },
       dominant_reflex: result.dominant,
       secondary_reflex: result.secondary,
     })
@@ -39,4 +30,18 @@ export async function fetchDiagnosticHistory(userId: string): Promise<Diagnostic
     .order('completed_at', { ascending: false });
   if (error) throw error;
   return (data ?? []) as DiagnosticResultRow[];
+}
+
+export type EnvoiResultat = 'envoye' | 'echec';
+
+// Envoie le résultat par e-mail et inscrit l’adresse à la newsletter (fonction Supabase « diagnostic-email »).
+export async function envoyerResultatParEmail(email: string, result: DiagnosticComputed): Promise<EnvoiResultat> {
+  try {
+    const { error } = await supabase.functions.invoke('diagnostic-email', {
+      body: { email, principal: result.principal, secondaires: result.secondaires, scores: result.scores },
+    });
+    return error ? 'echec' : 'envoye';
+  } catch {
+    return 'echec';
+  }
 }

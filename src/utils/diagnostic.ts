@@ -1,31 +1,35 @@
-import { REFLEX_TYPES, type DiagnosticComputed, type DiagnosticQuestion, type ReflexScores, type ReflexType } from '../types';
+import { REFLEX_TYPES, type DiagnosticComputed, type DiagnosticQuestion, type ReflexScores } from '../types';
 
 export function emptyScores(): ReflexScores {
-  return { avoidance: 0, accommodation: 0, defense: 0, control: 0, withdrawal: 0 };
+  return { withdraw: 0, endure: 0, overadapt: 0, impose: 0, conform: 0 };
 }
 
+// Calcul (page Notion) : on additionne les deux réponses de chaque réflexe (score de −4 à +4).
+// Le score le plus élevé donne le réflexe principal, le deuxième le réflexe secondaire.
+// En cas d’égalité, les réflexes concernés partagent le même rang.
 // selected : question_id -> answer_id
 export function computeDiagnostic(questions: DiagnosticQuestion[], selected: Record<string, string>): DiagnosticComputed {
   const scores = emptyScores();
   const answers: DiagnosticComputed['answers'] = [];
-  // Ordre d'apparition des réponses, pour départager les égalités de façon stable :
-  // à score égal, le réflexe choisi le plus tôt dans le questionnaire l'emporte.
-  const firstSeen = new Map<ReflexType, number>();
 
-  questions.forEach((q, index) => {
+  questions.forEach((q) => {
     const answer = q.answers.find((a) => a.id === selected[q.id]);
     if (!answer) return;
     scores[answer.reflex_type] += answer.score;
-    answers.push({ question_id: q.id, answer_id: answer.id, reflex_type: answer.reflex_type });
-    if (!firstSeen.has(answer.reflex_type)) firstSeen.set(answer.reflex_type, index);
+    answers.push({ question_id: q.id, answer_id: answer.id, reflex_type: answer.reflex_type, score: answer.score });
   });
 
-  const ranked = [...REFLEX_TYPES].sort((a, b) => {
-    if (scores[b] !== scores[a]) return scores[b] - scores[a];
-    return (firstSeen.get(a) ?? 99) - (firstSeen.get(b) ?? 99);
-  });
+  const distincts = [...new Set(REFLEX_TYPES.map((r) => scores[r]))].sort((a, b) => b - a);
+  const principal = REFLEX_TYPES.filter((r) => scores[r] === distincts[0]);
+  // Si plusieurs réflexes sont premiers ex æquo, ils sont tous principaux : pas de secondaire.
+  const secondaires = principal.length === 1 && distincts.length > 1 ? REFLEX_TYPES.filter((r) => scores[r] === distincts[1]) : [];
 
-  const dominant = ranked[0];
-  const secondary = scores[ranked[1]] > 0 ? ranked[1] : null;
-  return { scores, dominant, secondary, answers };
+  return {
+    scores,
+    principal,
+    secondaires,
+    dominant: principal[0],
+    secondary: principal[1] ?? secondaires[0] ?? null,
+    answers,
+  };
 }
