@@ -94,6 +94,7 @@ window.PA_OFFRE = {
       ],
     },
   ],
+  apropos: true, // section « A Propos » d'Agnès, comme sur la page d'accueil
   faq: [], // { question, reponse }
   rappel: { bouton: { label: "Découvrir mon réflexe face aux conversations difficiles", link: "diagnostic", note: "10 questions, diagnostic gratuit." } },
 };

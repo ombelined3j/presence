@@ -160,7 +160,7 @@ p { margin: 0 0 1em; }
 .lead.kw { font-size: 20px; font-family: var(--titre); margin-bottom: 0; }
 .hero__visual { order: 1; position: relative; margin: 0; width: 100%; max-width: 680px; justify-self: center; padding: 18px 18px 0 0; }
 .hero__c1 { width: 46%; aspect-ratio: 1; right: 0; top: 0; }
-.hero__photo { position: relative; border-radius: var(--r-band); overflow: hidden; aspect-ratio: 1000 / 857; }
+.hero__photo { position: relative; border-radius: var(--r-band); overflow: hidden; aspect-ratio: 1100 / 949; }
 .hero__photo { background: #E6D3CB; }
 .hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
 @media (max-width: 899px) { .hero__visual { max-width: 440px; } }
@@ -261,6 +261,7 @@ p { margin: 0 0 1em; }
 .videos { display: grid; gap: 40px; justify-items: center; margin-top: 56px; }
 .videos--seules { margin-top: 0; }
 .videos__titre { text-align: center; }
+.reseaux { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 40px; }
 .videos__todo { justify-self: start; }
 .video { width: 100%; max-width: 504px; }
 .video__intro { font-family: var(--titre); font-size: 22px; line-height: 1.3; margin-bottom: 14px; }
@@ -285,7 +286,7 @@ p { margin: 0 0 1em; }
 .final { position: relative; overflow: hidden; background: var(--vert); color: var(--blanc); padding: 72px 0; }
 .final__inner { position: relative; z-index: 1; max-width: 760px; text-align: center; }
 .final .h2 { margin-bottom: 20px; }
-.final__profils { width: min(100%, 360px); margin: 0 auto 28px; padding: 20px 28px 16px; background: var(--surface); border-radius: var(--r-band); }
+.final__profils { width: min(100%, 320px); margin: 0 auto 28px; }
 .final__profils img { width: 100%; }
 .final p { font-size: 18px; }
 .final .cta__note { font-size: 15px; }

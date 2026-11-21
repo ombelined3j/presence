@@ -1,8 +1,7 @@
 // Page Immersions. Texte : bloc « Immersion » du site actuel, mot pour mot.
-// Pas encore de lien d'inscription : pas de bouton sur cette page (demande d'Ombeline :
-// aucun bouton vers la liste de diffusion). Ajouter le lien ici quand il existera,
-// par exemple : var IMMERSION_BOUTON = { label: "…", href: "https://…" };
-var IMMERSION_BOUTON = null;
+// Pas encore d'inscription aux immersions : le bouton invite à s'inscrire à la newsletter
+// pour être prévenu des prochaines dates (demande d'Ombeline du 21/11).
+var IMMERSION_BOUTON = { label: "S’inscrire à la newsletter pour être informé des prochaines immersions", link: "newsletter" };
 
 window.PA_OFFRE = {
   cle: "immersions",

@@ -13,6 +13,8 @@ window.PA_OFFRE = {
     ],
     dansQuelCas: "Une conversation difficile est prévue dans les prochains jours, ou le besoin est ponctuel ou urgent.",
     visuel: { type: "bulles" },
+    // Affiché juste au-dessus du bouton (demande d'Ombeline du 21/11).
+    mention: "Réservez et payez en ligne, puis contactez-moi à agnes@presenceauthentique.com pour définir le jour et l’heure de votre coaching.",
     bouton: SOS_PAIEMENT,
   },
   autorite: { elements: [], titreLogos: "" },
@@ -25,6 +27,7 @@ window.PA_OFFRE = {
   },
   etapes: [
     { texte: "Vous réservez et payez en ligne." },
+    { texte: "Vous me contactez à agnes@presenceauthentique.com pour définir le jour et l’heure de votre coaching." },
   ],
   faq: [],
   rappel: { bouton: SOS_PAIEMENT },

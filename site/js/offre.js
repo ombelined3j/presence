@@ -181,6 +181,17 @@
 
   (O.blocs || []).filter(function (b) { return !b.avant; }).forEach(function (b) { html += renderBloc(b); });
 
+  // À propos d'Agnès, comme sur la page d'accueil (section #agnes, même texte et même photo).
+  // Activé par apropos: true dans le fichier de la page.
+  if (O.apropos) {
+    html += '<section class="section apropos" aria-labelledby="agnes-titre"><div class="wrap apropos__grid">' +
+      '<img class="apropos__photo" src="/assets/agnes.webp" alt="Portrait d’Agnès Candiotti" width="500" height="748" loading="lazy" decoding="async" />' +
+      '<div class="apropos__text"><h2 class="h2" id="agnes-titre">A Propos</h2>' +
+      '<p>Je suis <span class="kw">Agnès Candiotti</span>, biologiste de formation devenue coach professionnelle certifiée.</p>' +
+      '<p>J’ai constaté au fil des ans que développer une assertivité tranquille était l’enjeu majeur de la plupart de mes clientes. Ayant moi-même cheminé avec cette question pendant des années, je mets mon expertise sur la compréhension du vivant et mes outils somatiques et relationnels au service de leur leadership personnel et relationnel.</p>' +
+      "</div></div></section>";
+  }
+
   // 2.6 FAQ : masquée tant qu'elle est vide. Format : { question, reponse }
   if (O.faq && O.faq.length) {
     html += section("o-faq", '<h2 class="h2">FAQ</h2><div class="faq">' + O.faq.map(function (q, i) {
